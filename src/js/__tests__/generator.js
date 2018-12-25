@@ -15,16 +15,18 @@ const FIXTURES = {
     },
 
     MAP_ONLY_OPTIONS: {
-        maps: [{ a: 'a', b: 'b' }, { c: 'c', d: 'd' }]
+        maps: ['a', 'b'],
+        designs: []
     },
 
     DESIGN_ONLY_OPTIONS: {
-        designs: [{ aa: 'aa', bb: 'bb' }, { cc: 'cc', dd: 'dd' }]
+        maps: [],
+        designs: ['aa', 'bb']
     },
 
     ALL_OPTIONS: {
-        maps: [{ a: 'a', b: 'b' }, { c: 'c', d: 'd' }],
-        designs: [{ aa: 'aa', bb: 'bb' }, { cc: 'cc', dd: 'dd' }]
+        maps: ['a', 'b'],
+        designs: ['aa', 'bb']
     },
 
     MAP: {
@@ -52,6 +54,44 @@ describe('# Generator', () => {
             parseOptions.mockReturnValue(FIXTURES.NO_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.EMPTY);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
+        });
+
+        it('### should throw an error when no maps', () => {
+            parseOptions.mockReturnValue(FIXTURES.DESIGN_ONLY_OPTIONS);
+            getDesign.mockReturnValue(FIXTURES.DESIGN);
+            expect(() => new Generator()).toThrowErrorMatchingSnapshot();
+            expect(() => new Generator(FIXTURES.DESIGN, undefined)).toThrowErrorMatchingSnapshot();
+        });
+
+        it('### should throw an error when no designs', () => {
+            parseOptions.mockReturnValue(FIXTURES.MAP_ONLY_OPTIONS);
+            getDesign.mockReturnValue(FIXTURES.EMPTY);
+            FS.readFileSync.mockReturnValue(FIXTURES.MAP);
+            expect(() => new Generator()).toThrowErrorMatchingSnapshot();
+            expect(() => new Generator(undefined, FIXTURES.MAP)).toThrowErrorMatchingSnapshot();
+        });
+
+        it('### should construct when parsed options present', () => {
+            parseOptions.mockReturnValue(FIXTURES.ALL_OPTIONS);
+            getDesign.mockReturnValue(FIXTURES.DESIGN);
+            FS.readFileSync.mockReturnValue(FIXTURES.MAP);
+            let generator = new Generator();
+            expect(generator).toMatchSnapshot();
+        });
+
+        it('### should construct when mixed options present - design as argument', () => {
+            parseOptions.mockReturnValue(FIXTURES.MAP_ONLY_OPTIONS);
+            FS.readFileSync.mockReturnValue(FIXTURES.MAP);
+            getDesign.mockReturnValue(FIXTURES.DESIGN);
+            let generator = new Generator(FIXTURES.DESIGN);
+            expect(generator).toMatchSnapshot();
+        });
+
+        it('### should construct when mixed options present - map as argument', () => {
+            parseOptions.mockReturnValue(FIXTURES.DESIGN_ONLY_OPTIONS);
+            getDesign.mockReturnValue(FIXTURES.DESIGN);
+            let generator = new Generator(undefined, FIXTURES.MAP);
+            expect(generator).toMatchSnapshot();
         });
     });
 });

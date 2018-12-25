@@ -16,7 +16,6 @@ class Generator {
 
         // Normalize design
         this._design = getDesign(rawDesign);
-        this._map = map;
 
         // Load map files
         this._map = this.options.maps.reduce((map, mapFile) => {
@@ -28,7 +27,7 @@ class Generator {
         this._map = map ? { ...this._map, ...map } : this._map;
 
         if (Object.keys(this.map).length === 0) {
-            throw new Error('Generator map needs to exist');
+            throw new Error('No maps found');
         }
 
         if (Object.keys(this.design).length === 0) {

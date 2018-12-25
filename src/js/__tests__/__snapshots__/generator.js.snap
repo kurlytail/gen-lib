@@ -1,3 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`# Generator ## constructor ### should throw an error when no maps or no designs 1`] = `"Generator map needs to exist"`;
+exports[`# Generator ## constructor ### should construct when mixed options present - design as argument 1`] = `
+Generator {
+  "_design": Object {
+    "aa": "aa",
+    "bb": "bb",
+  },
+  "_map": Object {
+    "a": "a",
+    "b": "b",
+  },
+  "_options": Object {
+    "designs": Array [],
+    "maps": Array [
+      "a",
+      "b",
+    ],
+  },
+}
+`;
+
+exports[`# Generator ## constructor ### should construct when mixed options present - map as argument 1`] = `
+Generator {
+  "_design": Object {
+    "aa": "aa",
+    "bb": "bb",
+  },
+  "_map": Object {
+    "a": "a",
+    "b": "b",
+  },
+  "_options": Object {
+    "designs": Array [
+      "aa",
+      "bb",
+    ],
+    "maps": Array [],
+  },
+}
+`;
+
+exports[`# Generator ## constructor ### should construct when parsed options present 1`] = `
+Generator {
+  "_design": Object {
+    "aa": "aa",
+    "bb": "bb",
+  },
+  "_map": Object {
+    "a": "a",
+    "b": "b",
+  },
+  "_options": Object {
+    "designs": Array [
+      "aa",
+      "bb",
+    ],
+    "maps": Array [
+      "a",
+      "b",
+    ],
+  },
+}
+`;
+
+exports[`# Generator ## constructor ### should throw an error when no designs 1`] = `"No designs found"`;
+
+exports[`# Generator ## constructor ### should throw an error when no designs 2`] = `"No designs found"`;
+
+exports[`# Generator ## constructor ### should throw an error when no maps 1`] = `"No maps found"`;
+
+exports[`# Generator ## constructor ### should throw an error when no maps 2`] = `"No maps found"`;
+
+exports[`# Generator ## constructor ### should throw an error when no maps or no designs 1`] = `"No maps found"`;
