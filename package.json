@@ -1,0 +1,76 @@
+{
+    "name": "@kurlytail/gen-lib",
+    "description": "Source generator library",
+    "version": "0.0.1",
+    "main": "dist/app.min.js",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.0.1",
+        "babel-jest": "^23.6.0",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-module-resolver": "^3.1.1",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-register": "^6.26.0",
+        "chalk": "^2.4.1",
+        "circular-dependency-plugin": "^4.2.1",
+        "debug": "^3.1.0",
+        "eslint": "^4.19.1",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-config-prettier": "^2.6.0",
+        "eslint-import-resolver-babel-module": "^4.0.0",
+        "eslint-loader": "^1.9.0",
+        "eslint-plugin-babel": "^4.1.2",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-jest": "^21.2.0",
+        "eslint-plugin-prettier": "^2.3.1",
+        "exports-loader": "^0.7.0",
+        "file-loader": "^1.1.6",
+        "imports-loader": "^0.8.0",
+        "jest": "^23.6.0",
+        "jest-junit-reporter": "^1.1.0",
+        "jest-localstorage-mock": "^2.2.0",
+        "jsdoc": "^3.5.5",
+        "lodash": "^4.17.4",
+        "prettier": "^1.10.2",
+        "rimraf": "^2.6.2",
+        "source-map-loader": "^0.2.3",
+        "source-map-support": "^0.5.0",
+        "stringifier": "^1.4.0",
+        "uglify-es": "^3.1.8",
+        "uglify-es-webpack-plugin": "^0.10.0",
+        "uuid": "^3.1.0",
+        "webpack": "^3.5.5"
+    },
+    "scripts": {
+        "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
+        "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons",
+        "lint": "eslint src",
+        "test": "jest tests",
+        "test:watch": "jest --watch tests",
+        "test:ci": "jest --ci tests",
+        "clean": "rimraf ./docs ./dist ./coverage test-report.xml"
+    },
+    "license": "UNLICENSED",
+    "jest": {
+        "testResultsProcessor": "./node_modules/jest-junit-reporter",
+        "moduleDirectories": [
+            "node_modules",
+            "./src"
+        ],
+        "collectCoverage": true,
+        "coverageReporters": [
+            "text",
+            "html"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.js",
+            "!**/node_modules/**"
+        ],
+        "setupFiles": [
+            "jest-localstorage-mock"
+        ]
+    }
+}

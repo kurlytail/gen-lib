@@ -1,0 +1,6 @@
+*tgz
+dist/
+node_modules/
+test-report.xml
+coverage/
+.vscode/
