@@ -25,7 +25,6 @@ module.exports = {
         sourceType: 'module',
         ecmaVersion: 6
     },
-    globals: { React: true },
     settings: {
         propWrapperFunctions: ['forbidExtraProps'],
         'import/resolver': {

@@ -1,6 +1,4 @@
-import getDesign from './design';
-import generate from './generate';
-import parseOptions from './options';
+import Generator from './generator';
 
 // Reexport
-export { getDesign, generate, parseOptions };
+export { Generator };

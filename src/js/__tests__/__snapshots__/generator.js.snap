@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Generator ## constructor ### should throw an error when no maps or no designs 1`] = `"Generator map needs to exist"`;
