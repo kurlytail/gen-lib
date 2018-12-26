@@ -34,6 +34,7 @@
         "jest-localstorage-mock": "^2.2.0",
         "jsdoc": "^3.5.5",
         "lodash": "^4.17.4",
+        "node-getopt": "^0.3.2",
         "prettier": "^1.10.2",
         "rimraf": "^2.6.2",
         "source-map-loader": "^0.2.3",

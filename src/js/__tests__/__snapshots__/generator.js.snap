@@ -11,8 +11,8 @@ Generator {
     "b": "b",
   },
   "_options": Object {
-    "designs": Array [],
-    "maps": Array [
+    "design": Array [],
+    "map": Array [
       "a",
       "b",
     ],
@@ -31,11 +31,11 @@ Generator {
     "b": "b",
   },
   "_options": Object {
-    "designs": Array [
+    "design": Array [
       "aa",
       "bb",
     ],
-    "maps": Array [],
+    "map": Array [],
   },
 }
 `;
@@ -51,11 +51,11 @@ Generator {
     "b": "b",
   },
   "_options": Object {
-    "designs": Array [
+    "design": Array [
       "aa",
       "bb",
     ],
-    "maps": Array [
+    "map": Array [
       "a",
       "b",
     ],
@@ -63,12 +63,12 @@ Generator {
 }
 `;
 
-exports[`# Generator ## constructor ### should throw an error when no designs 1`] = `"No designs found"`;
+exports[`# Generator ## constructor ### should throw an error when no design 1`] = `"No designs found"`;
 
-exports[`# Generator ## constructor ### should throw an error when no designs 2`] = `"No designs found"`;
+exports[`# Generator ## constructor ### should throw an error when no design 2`] = `"No designs found"`;
 
-exports[`# Generator ## constructor ### should throw an error when no maps 1`] = `"No maps found"`;
+exports[`# Generator ## constructor ### should throw an error when no map 1`] = `"No maps found"`;
 
-exports[`# Generator ## constructor ### should throw an error when no maps 2`] = `"No maps found"`;
+exports[`# Generator ## constructor ### should throw an error when no map 2`] = `"No maps found"`;
 
-exports[`# Generator ## constructor ### should throw an error when no maps or no designs 1`] = `"No maps found"`;
+exports[`# Generator ## constructor ### should throw an error when no map or no design 1`] = `"No maps found"`;

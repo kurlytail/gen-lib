@@ -1,12 +1,13 @@
 import parseOptions from './options';
 import getDesign from './design';
 import FS from 'fs';
+import generate from './generate';
 
 class Generator {
     constructor(design = undefined, map = undefined, options = undefined) {
-        this._options = options ? options : parseOptions();
+        this._options = options ? options : parseOptions(process.argv.slice(2));
         // Load design files
-        let rawDesign = this.options.designs.reduce((design, designFile) => {
+        let rawDesign = this.options.design.reduce((design, designFile) => {
             const designJSON = FS.readFileSync(designFile);
             return { ...design, ...designJSON };
         }, {});
@@ -18,7 +19,7 @@ class Generator {
         this._design = getDesign(rawDesign);
 
         // Load map files
-        this._map = this.options.maps.reduce((map, mapFile) => {
+        this._map = this.options.map.reduce((map, mapFile) => {
             const newMap = FS.readFileSync(mapFile);
             return { ...map, ...newMap };
         }, {});
@@ -47,7 +48,9 @@ class Generator {
         return this._options;
     }
 
-    generate() {}
+    generate() {
+        return generate(this.design, this.map);
+    }
 }
 
 export default Generator;

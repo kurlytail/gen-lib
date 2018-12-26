@@ -1,32 +1,34 @@
 import parseOptions from '../options';
 import getDesign from '../design';
 import FS from 'fs';
+import generate from '../generate';
 
 import Generator from '../generator';
 
 jest.mock('../options');
 jest.mock('../design');
 jest.mock('fs');
+jest.mock('../generate');
 
 const FIXTURES = {
     NO_OPTIONS: {
-        maps: [],
-        designs: []
+        map: [],
+        design: []
     },
 
     MAP_ONLY_OPTIONS: {
-        maps: ['a', 'b'],
-        designs: []
+        map: ['a', 'b'],
+        design: []
     },
 
     DESIGN_ONLY_OPTIONS: {
-        maps: [],
-        designs: ['aa', 'bb']
+        map: [],
+        design: ['aa', 'bb']
     },
 
     ALL_OPTIONS: {
-        maps: ['a', 'b'],
-        designs: ['aa', 'bb']
+        map: ['a', 'b'],
+        design: ['aa', 'bb']
     },
 
     MAP: {
@@ -47,23 +49,24 @@ describe('# Generator', () => {
         afterEach(() => {
             parseOptions.mockReset();
             getDesign.mockReset();
+            generate.mockReset();
             FS.readFileSync.mockReset();
         });
 
-        it('### should throw an error when no maps or no designs', () => {
+        it('### should throw an error when no map or no design', () => {
             parseOptions.mockReturnValue(FIXTURES.NO_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.EMPTY);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
         });
 
-        it('### should throw an error when no maps', () => {
+        it('### should throw an error when no map', () => {
             parseOptions.mockReturnValue(FIXTURES.DESIGN_ONLY_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
             expect(() => new Generator(FIXTURES.DESIGN, undefined)).toThrowErrorMatchingSnapshot();
         });
 
-        it('### should throw an error when no designs', () => {
+        it('### should throw an error when no design', () => {
             parseOptions.mockReturnValue(FIXTURES.MAP_ONLY_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.EMPTY);
             FS.readFileSync.mockReturnValue(FIXTURES.MAP);
@@ -92,6 +95,19 @@ describe('# Generator', () => {
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             let generator = new Generator(undefined, FIXTURES.MAP);
             expect(generator).toMatchSnapshot();
+        });
+    });
+
+    describe('## generate', () => {
+        it('### should call generate function', () => {
+            parseOptions.mockReturnValue(FIXTURES.ALL_OPTIONS);
+            getDesign.mockReturnValue(FIXTURES.DESIGN);
+            FS.readFileSync.mockReturnValue(FIXTURES.MAP);
+
+            let generator = new Generator();
+            generator.generate();
+
+            expect(generate).toHaveBeenCalled();
         });
     });
 });
