@@ -10,8 +10,6 @@ class Generator {
         this._options = options ? options : parseOptions(process.argv.slice(2));
         // Load design files
         let rawDesign = this.options.design.reduce((design, designFile) => {
-            console.log(`Processing design ${designFile}`);
-
             const designJSON = JSON.parse(FS.readFileSync(designFile));
             return { ...design, ...designJSON };
         }, {});
@@ -24,8 +22,6 @@ class Generator {
 
         // Load map files
         this._map = this.options.map.reduce((map, mapFile) => {
-            console.log(`Processing map ${mapFile}`);
-
             let newMap = FS.readFileSync(mapFile);
             newMap = JSON.parse(lodash.template(newMap)(this.design));
 

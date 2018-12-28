@@ -24,7 +24,6 @@ function getOverwriteOption(options, templateDescription) {
 }
 
 function generateFileData(options, templateDescription, { fileName, baseFileName }) {
-    console.log(`Generating ${fileName} from ${templateDescription.template}`);
     const template = lodash.template(FS.readFileSync(fileName));
     let newFileText = template(templateDescription.object);
 
@@ -56,7 +55,7 @@ function generateFileData(options, templateDescription, { fileName, baseFileName
     return { currentFileText, baseFileText, newFileText };
 }
 
-function manageOverwriteState(options, fileName, templateDescription, { currentFileText, baseFileText, newFileText }) {
+function manageOverwriteState(options, fileName, templateDescription, { currentFileText, baseFileText }) {
     const overwrite = getOverwriteOption(options, templateDescription);
 
     switch (overwrite) {
@@ -88,7 +87,7 @@ function manageOverwriteState(options, fileName, templateDescription, { currentF
     }
 }
 
-function writeFiles({ fileName, baseFileName }, { currentFileText, baseFileText, newFileText }) {
+function writeFiles({ fileName, baseFileName }, { newFileText }) {
     FS.writeFileSync(fileName, newFileText);
     FS.writeFileSync(baseFileName, newFileText);
 }
