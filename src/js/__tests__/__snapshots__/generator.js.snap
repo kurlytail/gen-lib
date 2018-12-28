@@ -8,10 +8,10 @@ Generator {
   },
   "_map": Object {
     "a": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/a",
+      "template": "a",
     },
     "b": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/b",
+      "template": "b",
     },
   },
   "_options": Object {
@@ -56,10 +56,10 @@ Generator {
   },
   "_map": Object {
     "b": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/b",
+      "template": "b",
     },
     "dddd": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/a",
+      "template": "a",
     },
   },
   "_options": Object {
@@ -83,10 +83,10 @@ Generator {
   },
   "_map": Object {
     "a": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/a",
+      "template": "a",
     },
     "b": Object {
-      "template": "/Users/ashwin/pmgr/gen-lib/b",
+      "template": "b",
     },
   },
   "_options": Object {

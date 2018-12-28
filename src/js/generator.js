@@ -28,7 +28,7 @@ class Generator {
             // Fixup all file names to global names
             newMap = Object.entries(newMap).reduce((map, [fileName, templateDescription]) => {
                 const templateFile = templateDescription.template;
-                let template = PATH.join(PATH.resolve(mapFile), PATH.relative(mapFile, templateFile));
+                let template = PATH.relative(PATH.resolve('./'), PATH.resolve(PATH.dirname(mapFile), templateFile));
                 if (PATH.isAbsolute(templateFile)) template = templateFile;
                 map[fileName] = { ...templateDescription, template };
                 return map;
