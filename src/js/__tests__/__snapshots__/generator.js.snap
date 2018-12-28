@@ -7,8 +7,12 @@ Generator {
     "bb": "bb",
   },
   "_map": Object {
-    "a": "a",
-    "b": "b",
+    "a": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/a",
+    },
+    "b": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/b",
+    },
   },
   "_options": Object {
     "design": Array [],
@@ -27,8 +31,12 @@ Generator {
     "bb": "bb",
   },
   "_map": Object {
-    "a": "a",
-    "b": "b",
+    "a": Object {
+      "template": "a",
+    },
+    "b": Object {
+      "template": "b",
+    },
   },
   "_options": Object {
     "design": Array [
@@ -40,6 +48,33 @@ Generator {
 }
 `;
 
+exports[`# Generator ## constructor ### should construct when mixed options present - template map as argument 1`] = `
+Generator {
+  "_design": Object {
+    "bb": "bb",
+    "cc": "dddd",
+  },
+  "_map": Object {
+    "b": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/b",
+    },
+    "dddd": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/a",
+    },
+  },
+  "_options": Object {
+    "design": Array [
+      "aa",
+      "bb",
+    ],
+    "map": Array [
+      "a",
+      "b",
+    ],
+  },
+}
+`;
+
 exports[`# Generator ## constructor ### should construct when parsed options present 1`] = `
 Generator {
   "_design": Object {
@@ -47,8 +82,12 @@ Generator {
     "bb": "bb",
   },
   "_map": Object {
-    "a": "a",
-    "b": "b",
+    "a": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/a",
+    },
+    "b": Object {
+      "template": "/Users/ashwin/pmgr/gen-lib/b",
+    },
   },
   "_options": Object {
     "design": Array [
