@@ -5,7 +5,8 @@ const path = require('path');
 const webpack = require('webpack');
 const chalk = require('chalk');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const UglifyEsPlugin = require('uglify-es-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDebug = process.env.NODE_ENV === 'debug';
@@ -14,10 +15,6 @@ const distPath = path.join(__dirname, 'dist');
 const showConfigOnly = '1' === process.env.SHOW_CONFIG_ONLY || 'true' === process.env.SHOW_CONFIG_ONLY;
 
 const config = {
-    entry: {
-        app: './src/js/index.js'
-    },
-
     output: {
         filename: `[name]${isDist}.js`,
         path: distPath,
@@ -75,12 +72,7 @@ const config = {
 };
 
 if (isProd) {
-    config.plugins.push(
-        new UglifyEsPlugin({
-            mangle: true,
-            compress: true
-        })
-    );
+    config.plugins.push(new UglifyJsPlugin({ sourceMap: true }));
 }
 
 // If ran with SHOW_CONFIG_ONLY=1|true, only show the config and exit cleanly
@@ -90,4 +82,16 @@ if (showConfigOnly) {
     process.exit(0);
 }
 
-module.exports = config;
+const configLib = Object.assign({}, config, {
+    externals: [nodeExternals()],
+    entry: {
+        lib: './src/js/index.js'
+    }
+});
+const configSgen = Object.assign({}, config, {
+    entry: {
+        sgen: './src/js/sgen.js'
+    }
+});
+
+module.exports = [configLib, configSgen];

@@ -38,14 +38,15 @@
         "source-map-loader": "^0.2.3",
         "source-map-support": "^0.5.0",
         "stringifier": "^1.4.0",
-        "uglify-es": "^3.1.8",
-        "uglify-es-webpack-plugin": "^0.10.0",
+        "uglifyjs-webpack-plugin": "^1.0.0",
         "uuid": "^3.1.0",
-        "webpack": "^3.5.5"
+        "webpack": "^3.5.5",
+        "webpack-node-externals": "^1.7.2"
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
         "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons",
+        "build-prod": "NODE_ENV=\"production\" webpack --display-modules --display-reasons",
         "lint": "eslint src",
         "test": "jest tests",
         "test:watch": "jest --watch tests",
@@ -80,5 +81,8 @@
         "node-getopt": "^0.3.2",
         "path": "^0.12.7",
         "three-way-merge": "^0.1.0"
+    },
+    "bin": {
+        "sgen": "dist/sgen.min.js"
     }
 }
