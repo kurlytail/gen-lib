@@ -6,8 +6,8 @@ import PATH from 'path';
 import lodash from 'lodash';
 
 class Generator {
-    constructor(design = undefined, map = undefined, options = undefined) {
-        this._options = new Options(process.argv.slice(2));
+    constructor(design = undefined, map = undefined, overrideOptions = undefined) {
+        this._options = new Options(process.argv.slice(2), overrideOptions);
 
         // Load design files
         let rawDesign = this.options.design.reduce((design, designFile) => {
