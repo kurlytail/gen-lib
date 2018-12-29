@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# options ## constructor ### should parse all options 1`] = `
+Options {
+  "design": Array [],
+  "map": Array [],
+  "someOption": Object {},
+}
+`;

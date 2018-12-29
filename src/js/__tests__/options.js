@@ -7,9 +7,14 @@ jest.mock('node-getopt');
 describe('# options', () => {
     describe('## constructor', () => {
         it('### should parse all options', () => {
-            new Options({});
-            expect(Getopt.mock.instances[0].bindHelp).toHaveBeenCalled();
-            expect(Getopt.mock.instances[0].parse).toHaveBeenCalled();
+            Getopt.mockImplementation(() => ({
+                bindHelp: jest.fn(),
+                parse: jest.fn(() => ({
+                    options: { someOption: {} }
+                }))
+            }));
+            let options = new Options({});
+            expect(options).toMatchSnapshot();
         });
     });
 });

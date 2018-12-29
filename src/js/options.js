@@ -17,7 +17,7 @@ class Options {
 
         getopt.bindHelp();
 
-        Object.assign(this, getopt.parse(processArgs), overrideOptions);
+        Object.assign(this, { design: [], map: [] }, getopt.parse(processArgs).options, overrideOptions);
     }
 }
 

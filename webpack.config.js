@@ -7,6 +7,8 @@ const chalk = require('chalk');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const nodeExternals = require('webpack-node-externals');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackOnBuildPlugin = require('on-build-webpack');
+const chmod = require('chmod');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDebug = process.env.NODE_ENV === 'debug';
@@ -93,5 +95,11 @@ const configSgen = Object.assign({}, config, {
         sgen: './src/js/sgen.js'
     }
 });
+
+configSgen.plugins.push(
+    new WebpackOnBuildPlugin(function(stats) {
+        chmod(`${__dirname}/dist/sgen.min.js`, 755);
+    })
+);
 
 module.exports = [configLib, configSgen];
