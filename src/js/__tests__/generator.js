@@ -1,4 +1,4 @@
-import parseOptions from '../options';
+import Options from '../options';
 import getDesign from '../design';
 import FS from 'fs';
 import { generate } from '../generate';
@@ -74,20 +74,20 @@ const FIXTURES = {
 describe('# Generator', () => {
     describe('## constructor', () => {
         afterEach(() => {
-            parseOptions.mockReset();
+            Options.mockReset();
             getDesign.mockReset();
             generate.mockReset();
             FS.readFileSync.mockReset();
         });
 
         it('### should throw an error when no map or no design', () => {
-            parseOptions.mockReturnValue(FIXTURES.NO_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.NO_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.EMPTY);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
         });
 
         it('### should throw an error when no map', () => {
-            parseOptions.mockReturnValue(FIXTURES.DESIGN_ONLY_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.DESIGN_ONLY_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
@@ -95,7 +95,7 @@ describe('# Generator', () => {
         });
 
         it('### should throw an error when no design', () => {
-            parseOptions.mockReturnValue(FIXTURES.MAP_ONLY_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.MAP_ONLY_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.EMPTY);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
             expect(() => new Generator()).toThrowErrorMatchingSnapshot();
@@ -103,7 +103,7 @@ describe('# Generator', () => {
         });
 
         it('### should construct when parsed options present', () => {
-            parseOptions.mockReturnValue(FIXTURES.ALL_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
             let generator = new Generator();
@@ -111,7 +111,7 @@ describe('# Generator', () => {
         });
 
         it('### should construct when mixed options present - design as argument', () => {
-            parseOptions.mockReturnValue(FIXTURES.MAP_ONLY_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.MAP_ONLY_OPTIONS);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             let generator = new Generator(FIXTURES.DESIGN);
@@ -119,7 +119,7 @@ describe('# Generator', () => {
         });
 
         it('### should construct when mixed options present - map as argument', () => {
-            parseOptions.mockReturnValue(FIXTURES.DESIGN_ONLY_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.DESIGN_ONLY_OPTIONS);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             let generator = new Generator(undefined, FIXTURES.MAP);
@@ -127,7 +127,7 @@ describe('# Generator', () => {
         });
 
         it('### should construct when mixed options present - template map as argument', () => {
-            parseOptions.mockReturnValue(FIXTURES.ALL_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
             FS.readFileSync.mockReturnValue(FIXTURES.TEMPLATE_MAP);
             getDesign.mockReturnValue(FIXTURES.TEMPLATE_DESIGN);
             let generator = new Generator();
@@ -137,7 +137,7 @@ describe('# Generator', () => {
 
     describe('## generate', () => {
         it('### should call generate function', () => {
-            parseOptions.mockReturnValue(FIXTURES.ALL_OPTIONS);
+            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
             getDesign.mockReturnValue(FIXTURES.DESIGN);
             FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
 

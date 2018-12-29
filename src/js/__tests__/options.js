@@ -1,13 +1,13 @@
 import Getopt from 'node-getopt';
 
-import parseOptions from '../options';
+import Options from '../options';
 
 jest.mock('node-getopt');
 
 describe('# options', () => {
-    describe('## parseOptions', () => {
+    describe('## constructor', () => {
         it('### should parse all options', () => {
-            parseOptions({});
+            const options = new Options({});
             expect(Getopt.mock.instances[0].bindHelp).toHaveBeenCalled();
             expect(Getopt.mock.instances[0].parse).toHaveBeenCalled();
         });

@@ -1,4 +1,4 @@
-import parseOptions from './options';
+import Options from './options';
 import getDesign from './design';
 import FS from 'fs';
 import { generate } from './generate';
@@ -7,7 +7,8 @@ import lodash from 'lodash';
 
 class Generator {
     constructor(design = undefined, map = undefined, options = undefined) {
-        this._options = options ? options : parseOptions(process.argv.slice(2));
+        this._options = new Options(process.argv.slice(2));
+
         // Load design files
         let rawDesign = this.options.design.reduce((design, designFile) => {
             const designJSON = JSON.parse(FS.readFileSync(designFile));
