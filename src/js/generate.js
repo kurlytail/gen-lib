@@ -1,9 +1,9 @@
 import PATH from 'path';
-import lodash from 'lodash';
 import FS from 'fs';
 import mkdirp from 'mkdirp';
 import { merge } from 'node-diff3';
 import logger from './logger';
+import _ from 'underscore';
 
 function manageFileNames(options, fileName) {
     const outputDirectory = options.output ? options.output : './';
@@ -23,7 +23,7 @@ function getOverwriteOption(options, templateDescription) {
 }
 
 function generateFileData(options, design, templateDescription, { fileName, baseFileName }) {
-    const template = lodash.template(FS.readFileSync(templateDescription.template));
+    const template = _.template(FS.readFileSync(templateDescription.template).toString());
     let newFileText = template({ design, options, context: templateDescription.context });
 
     let currentFileText;

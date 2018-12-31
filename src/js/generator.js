@@ -3,7 +3,7 @@ import getDesign from './design';
 import FS from 'fs';
 import { generate } from './generate';
 import PATH from 'path';
-import lodash from 'lodash';
+import _ from 'underscore';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -30,8 +30,8 @@ class Generator {
     }
 
     _loadOneMap(map, mapFile) {
-        let mapFileText = FS.readFileSync(mapFile);
-        let newMap = JSON.parse(lodash.template(mapFileText)({ design: this.design, options: this.options }));
+        let mapFileText = FS.readFileSync(mapFile).toString();
+        let newMap = JSON.parse(_.template(mapFileText)({ design: this.design, options: this.options }));
 
         // Fixup all file names to global names
         newMap = Object.entries(newMap).reduce((...args) => this._normalizeMapEntry(mapFile, ...args), {});
