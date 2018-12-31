@@ -1,7 +1,6 @@
 import FS from 'fs';
 import mkdirp from 'mkdirp';
 import { merge } from 'node-diff3';
-import logger from '../logger';
 
 import { getOverwriteOption, manageFileNames, generateFileData, manageOverwriteState, writeFiles } from '../generate';
 
