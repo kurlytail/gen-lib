@@ -39,7 +39,7 @@ function generateFileData(options, design, templateDescription, { fileName, base
 
     const overwrite = getOverwriteOption(options, templateDescription);
 
-    if (baseFileText && currentFileText && newFileText && overwrite === 'merge') {
+    if (baseFileText && currentFileText && overwrite === 'merge') {
         const merged = merge(currentFileText, baseFileText, newFileText);
         if (merged.conflict) {
             logger.warn(
@@ -91,7 +91,7 @@ function manageOverwriteState(options, fileName, templateDescription, { currentF
 }
 
 function writeFiles({ fileName, baseFileName }, { newFileText, baseFileText }) {
-    if (newFileText) {
+    if (newFileText !== undefined) {
         FS.writeFileSync(fileName, newFileText);
     }
     FS.writeFileSync(baseFileName, baseFileText);
