@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:flow="http://www.brainspeedtech.com/swarm/flow" xmlns:master="http://www.brainspeedtech.com/swarm/master" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <notation:Diagram xmi:id="_8sJVQAvhEemswplt4kY5KA" type="Master" element="_8sJVQgvhEemswplt4kY5KA" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_8sJVQQvhEemswplt4kY5KA"/>
+  </notation:Diagram>
+  <master:MasterDesign xmi:id="_8sJVQgvhEemswplt4kY5KA" name="fixture">
+    <cell xmi:type="master:MasterCell" xmi:id="_CuIs4AviEemswplt4kY5KA" output="_OZnckAviEemswplt4kY5KA" count="1" external="false" internalName="master_cell_cella" name="cella">
+      <designCells xmi:type="flow:Cell" href="default.flow#_BFc30AviEemswplt4kY5KA"/>
+    </cell>
+    <cell xmi:type="master:MasterCell" xmi:id="_M_QXYAviEemswplt4kY5KA" input="_OZnckAviEemswplt4kY5KA" count="1" external="false" internalName="master_cell_cellb" name="cellb">
+      <designCells xmi:type="flow:Cell" href="default.flow#_MiaqYAviEemswplt4kY5KA"/>
+    </cell>
+    <tube xmi:type="master:MasterTube" xmi:id="_OZnckAviEemswplt4kY5KA" from="_CuIs4AviEemswplt4kY5KA" internalName="master_tube_cella_cellb" name="cella_cellb" to="_M_QXYAviEemswplt4kY5KA">
+      <designTubes xmi:type="flow:Tube" href="default.flow#_ODsP4AviEemswplt4kY5KA"/>
+    </tube>
+  </master:MasterDesign>
+</xmi:XMI>

@@ -59,7 +59,7 @@
         "testResultsProcessor": "./node_modules/jest-junit-reporter",
         "moduleDirectories": [
             "node_modules",
-            "./src"
+            "./src/js"
         ],
         "collectCoverage": true,
         "coverageReporters": [
@@ -67,7 +67,7 @@
             "html"
         ],
         "collectCoverageFrom": [
-            "src/**/*.js",
+            "src/js/**/*.js",
             "!**/node_modules/**"
         ],
         "setupFiles": [
@@ -75,14 +75,18 @@
         ]
     },
     "dependencies": {
+        "child_process": "^1.0.2",
         "chmod": "^0.2.1",
         "flat": "^4.1.0",
         "fs": "0.0.1-security",
         "lodash": "^4.17.11",
+        "logform": "^2.0.0",
         "mkdirp": "^0.5.1",
+        "node-diff3": "^1.0.0",
         "node-getopt": "^0.3.2",
         "path": "^0.12.7",
-        "three-way-merge": "^0.1.0"
+        "three-way-merge": "^0.1.0",
+        "winston": "^3.1.0"
     },
     "bin": {
         "sgen": "dist/sgen.min.js"

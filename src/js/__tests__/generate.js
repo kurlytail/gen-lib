@@ -1,12 +1,14 @@
 import FS from 'fs';
 import mkdirp from 'mkdirp';
-import merge from 'three-way-merge';
+import { merge } from 'node-diff3';
+import logger from '../logger';
 
 import { getOverwriteOption, manageFileNames, generateFileData, manageOverwriteState, writeFiles } from '../generate';
 
 jest.mock('fs');
 jest.mock('mkdirp');
-jest.mock('three-way-merge');
+jest.mock('node-diff3');
+jest.mock('../logger');
 
 const FIXTURES = {
     OPTION_OUTPUT: { output: 'some/directory' },
@@ -59,17 +61,17 @@ describe('# generate', () => {
         it('### should return filenames for filename with no options', () => {
             let fileNames = manageFileNames({}, 'test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp).toBeCalled();
+            expect(mkdirp.sync).toBeCalled();
         });
         it('### should return filenames for filename with output options', () => {
             let fileNames = manageFileNames(FIXTURES.OPTION_OUTPUT, 'test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp).toBeCalled();
+            expect(mkdirp.sync).toBeCalled();
         });
         it('### should return filenames for absolute filename with output options', () => {
             let fileNames = manageFileNames(FIXTURES.OPTION_OUTPUT, '/test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp).toBeCalled();
+            expect(mkdirp.sync).toBeCalled();
         });
     });
 
@@ -77,11 +79,11 @@ describe('# generate', () => {
         beforeEach(() => {
             FS.readFileSync.mockReset();
             FS.existsSync.mockReset();
-            merge.mockReturnValue({ conflict: false, joinedResult: () => 'merged file' });
+            merge.mockReturnValue({ conflict: false, result: 'merged file'.split('') });
         });
         it('### should generate template file when no base or edited files present', () => {
             FS.readFileSync.mockReturnValue('some template');
-            let output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
+            const output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
             expect(output).toMatchSnapshot();
         });
         it('### should generate template file when base file present and no edited files present', () => {
@@ -90,7 +92,7 @@ describe('# generate', () => {
             FS.readFileSync.mockReturnValueOnce('old base template');
             FS.existsSync.mockReturnValueOnce(false);
             FS.existsSync.mockReturnValueOnce(true);
-            let output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
+            const output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
             expect(output).toMatchSnapshot();
         });
         it('### should generate template file when base file and edited files present', () => {
@@ -98,7 +100,7 @@ describe('# generate', () => {
             FS.readFileSync.mockReturnValueOnce('current edited file');
             FS.readFileSync.mockReturnValueOnce('old base template');
             FS.existsSync.mockReturnValue(true);
-            let output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
+            const output = generateFileData({}, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES);
             expect(output).toMatchSnapshot();
         });
         it('### should generate template file when base file and edited files present with merge option', () => {
@@ -106,7 +108,7 @@ describe('# generate', () => {
             FS.readFileSync.mockReturnValueOnce('current edited file');
             FS.readFileSync.mockReturnValueOnce('old base template');
             FS.existsSync.mockReturnValue(true);
-            let output = generateFileData(
+            const output = generateFileData(
                 { overwrite: 'merge' },
                 FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE,
                 FIXTURES.FILENAMES
@@ -119,9 +121,12 @@ describe('# generate', () => {
             FS.readFileSync.mockReturnValueOnce('current edited file');
             FS.readFileSync.mockReturnValueOnce('old base template');
             FS.existsSync.mockReturnValue(true);
-            expect(() =>
-                generateFileData({ overwrite: 'merge' }, FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE, FIXTURES.FILENAMES)
-            ).toThrowErrorMatchingSnapshot();
+            const output = generateFileData(
+                { overwrite: 'merge' },
+                FIXTURES.TEMPLATE_DESCRIPTION_NOOVERWRITE,
+                FIXTURES.FILENAMES
+            );
+            expect(output).toMatchSnapshot();
         });
     });
 

@@ -50,7 +50,7 @@ const FIXTURES = {
     }`,
 
     TEMPLATE_MAP: `{
-        "<%=cc%>": {
+        "<%=design.cc%>": {
             "template": "a"
         },
         "b": {

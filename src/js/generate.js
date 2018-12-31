@@ -2,18 +2,17 @@ import PATH from 'path';
 import lodash from 'lodash';
 import FS from 'fs';
 import mkdirp from 'mkdirp';
-import merge from 'three-way-merge';
+import { merge } from 'node-diff3';
+import logger from './logger';
 
 function manageFileNames(options, fileName) {
     const outputDirectory = options.output ? options.output : './';
-
+    const baseFileName = PATH.join(outputDirectory, '.generated', fileName);
     if (!PATH.isAbsolute(fileName)) {
         fileName = PATH.join(outputDirectory, fileName);
     }
-    const baseFileName = PATH.join(outputDirectory, '.generated', fileName);
-
-    mkdirp(PATH.dirname(fileName));
-    mkdirp(PATH.dirname(baseFileName));
+    mkdirp.sync(PATH.dirname(fileName));
+    mkdirp.sync(PATH.dirname(baseFileName));
 
     return { fileName, baseFileName };
 }
@@ -24,30 +23,34 @@ function getOverwriteOption(options, templateDescription) {
 }
 
 function generateFileData(options, templateDescription, { fileName, baseFileName }) {
-    const template = lodash.template(FS.readFileSync(fileName));
+    const template = lodash.template(FS.readFileSync(templateDescription.template));
     let newFileText = template(templateDescription.object);
 
     let currentFileText;
     let baseFileText;
 
     if (FS.existsSync(fileName)) {
-        currentFileText = FS.readFileSync(fileName);
+        currentFileText = FS.readFileSync(fileName).toString();
     }
 
     if (FS.existsSync(baseFileName)) {
-        baseFileText = FS.readFileSync(baseFileName);
+        baseFileText = FS.readFileSync(baseFileName).toString();
     }
 
     const overwrite = getOverwriteOption(options, templateDescription);
 
     if (baseFileText && currentFileText && newFileText && overwrite === 'merge') {
-        const merged = merge(baseFileText, currentFileText, newFileText);
+        const merged = merge(currentFileText, baseFileText, newFileText);
         if (merged.conflict) {
-            throw new Error(`${fileName} cannot be merged due to conflicts`);
+            logger.warn(
+                `conflicts between ${fileName} and ${baseFileName}, ${fileName} file unchanged, please merge manually`
+            );
+            baseFileText = newFileText;
+            newFileText = undefined;
+        } else {
+            baseFileText = newFileText;
+            newFileText = merged.result.join('');
         }
-
-        baseFileText = newFileText;
-        newFileText = merged.joinedResult();
     } else {
         baseFileText = newFileText;
     }
@@ -87,9 +90,11 @@ function manageOverwriteState(options, fileName, templateDescription, { currentF
     }
 }
 
-function writeFiles({ fileName, baseFileName }, { newFileText }) {
-    FS.writeFileSync(fileName, newFileText);
-    FS.writeFileSync(baseFileName, newFileText);
+function writeFiles({ fileName, baseFileName }, { newFileText, baseFileText }) {
+    if (newFileText) {
+        FS.writeFileSync(fileName, newFileText);
+    }
+    FS.writeFileSync(baseFileName, baseFileText);
 }
 
 function generate(design, map, options) {
@@ -99,7 +104,7 @@ function generate(design, map, options) {
             fileName,
             baseFileName
         });
-
+        logger.info(`Generating ${fileName} from template ${templateDescription.template}`);
         writeFiles({ fileName, baseFileName }, { currentFileText, baseFileText, newFileText });
     });
 }

@@ -32,7 +32,13 @@ Object {
 }
 `;
 
-exports[`# generate ## generateFileData ### should throw when base file and edited files present with merge option and merge conflict 1`] = `"/file cannot be merged due to conflicts"`;
+exports[`# generate ## generateFileData ### should throw when base file and edited files present with merge option and merge conflict 1`] = `
+Object {
+  "baseFileText": "some template",
+  "currentFileText": "current edited file",
+  "newFileText": undefined,
+}
+`;
 
 exports[`# generate ## manageFileNames ### should return filenames for absolute filename with output options 1`] = `
 Object {
@@ -50,7 +56,7 @@ Object {
 
 exports[`# generate ## manageFileNames ### should return filenames for filename with output options 1`] = `
 Object {
-  "baseFileName": "some/directory/.generated/some/directory/test",
+  "baseFileName": "some/directory/.generated/test",
   "fileName": "some/directory/test",
 }
 `;

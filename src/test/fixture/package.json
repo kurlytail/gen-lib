@@ -1,0 +1,15 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "dependencies" : {
+	  "lodash" : "",
+	  "mkdirp" : "",
+      "fs" : "",
+      "debug" : ""
+  },
+  "scripts" : {
+    "start" : "node generate.js"
+  }
+}

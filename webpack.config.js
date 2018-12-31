@@ -102,4 +102,6 @@ configSgen.plugins.push(
     })
 );
 
+configSgen.plugins.push(new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true }));
+
 module.exports = [configLib, configSgen];

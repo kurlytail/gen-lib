@@ -1,0 +1,10 @@
+{
+<%design.MasterCell.forEach(cell => {%>
+    "<%=cell.name%>" : {
+        "template" : "master._"
+    },
+<%});%>
+    "toplevel" : {
+        "template" : "toplevel._"
+    }
+}
