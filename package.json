@@ -32,7 +32,6 @@
         "jest-junit-reporter": "^1.1.0",
         "jest-localstorage-mock": "^2.2.0",
         "jsdoc": "^3.5.5",
-        "on-build-webpack": "^0.1.0",
         "prettier": "^1.10.2",
         "rewire": "^4.0.1",
         "rimraf": "^2.6.2",
@@ -46,8 +45,8 @@
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
-        "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons",
-        "build-prod": "NODE_ENV=\"production\" webpack --display-modules --display-reasons",
+        "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
+        "build-prod": "NODE_ENV=\"production\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
         "lint": "eslint src",
         "test": "jest tests",
         "test:watch": "jest --watch tests",
@@ -86,6 +85,7 @@
         "node-getopt": "^0.3.2",
         "path": "^0.12.7",
         "three-way-merge": "^0.1.0",
+        "webpack-permissions-plugin": "^1.0.0",
         "winston": "^3.1.0"
     },
     "bin": {
