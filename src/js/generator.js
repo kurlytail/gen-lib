@@ -31,7 +31,7 @@ class Generator {
 
     _loadOneMap(map, mapFile) {
         let mapFileText = FS.readFileSync(mapFile).toString();
-        let newMap = JSON.parse(_.template(mapFileText)({ design: this.design, options: this.options }));
+        let newMap = JSON.parse(_.template(mapFileText)({ design: this.design, options: this.options, map }));
 
         // Fixup all file names to global names
         newMap = Object.entries(newMap).reduce((...args) => this._normalizeMapEntry(mapFile, ...args), {});

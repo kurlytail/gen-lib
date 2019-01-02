@@ -22,9 +22,9 @@ function getOverwriteOption(options, templateDescription) {
     return options.forceOverwrite ? options.overwrite : overwrite;
 }
 
-function generateFileData(options, design, templateDescription, { fileName, baseFileName }) {
+function generateFileData(options, design, templateDescription, { fileName, baseFileName }, map) {
     const template = _.template(FS.readFileSync(templateDescription.template).toString());
-    let newFileText = template({ design, options, context: templateDescription.context });
+    let newFileText = template({ design, options, context: templateDescription.context, map });
 
     let currentFileText;
     let baseFileText;
@@ -100,10 +100,16 @@ function writeFiles({ fileName, baseFileName }, { newFileText, baseFileText }) {
 function generate(design, map, options) {
     Object.entries(map).forEach(([generatedFileName, templateDescription]) => {
         const { fileName, baseFileName } = manageFileNames(options, generatedFileName);
-        const { baseFileText, currentFileText, newFileText } = generateFileData(options, design, templateDescription, {
-            fileName,
-            baseFileName
-        });
+        const { baseFileText, currentFileText, newFileText } = generateFileData(
+            options,
+            design,
+            templateDescription,
+            {
+                fileName,
+                baseFileName
+            },
+            map
+        );
         logger.info(`Generating ${fileName} from template ${templateDescription.template}`);
         writeFiles({ fileName, baseFileName }, { currentFileText, baseFileText, newFileText });
     });
