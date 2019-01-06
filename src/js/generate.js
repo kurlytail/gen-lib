@@ -38,8 +38,9 @@ function generateFileData(options, design, templateDescription, { fileName, base
     }
 
     const overwrite = getOverwriteOption(options, templateDescription);
+    baseFileText = baseFileText && overwrite !== 'gen-merge' ? baseFileText : '';
 
-    if (baseFileText && currentFileText && overwrite === 'merge') {
+    if (baseFileText && currentFileText && (overwrite === 'merge' || overwrite === 'gen-merge')) {
         const merged = merge(currentFileText, baseFileText, newFileText);
         if (merged.conflict) {
             logger.warn(
