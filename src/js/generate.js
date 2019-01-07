@@ -22,9 +22,15 @@ function getOverwriteOption(options, templateDescription) {
     return options.forceOverwrite ? options.overwrite : overwrite;
 }
 
-function generateFileData(options, design, templateDescription, { fileName, baseFileName }, map) {
+function generateFileData(generator, templateDescription, { fileName, baseFileName }) {
     const template = _.template(FS.readFileSync(templateDescription.template).toString());
-    let newFileText = template({ design, options, context: templateDescription.context, map });
+    let newFileText = template({
+        design: generator.design,
+        options: generator.options,
+        context: templateDescription.context,
+        map: generator.map,
+        extension: matcher => generator.extensionBuilder.getExtensions(matcher)
+    });
 
     let currentFileText;
     let baseFileText;
@@ -37,7 +43,7 @@ function generateFileData(options, design, templateDescription, { fileName, base
         baseFileText = FS.readFileSync(baseFileName).toString();
     }
 
-    const overwrite = getOverwriteOption(options, templateDescription);
+    const overwrite = getOverwriteOption(generator.options, templateDescription);
     baseFileText = baseFileText && overwrite !== 'gen-merge' ? baseFileText : '';
 
     if (baseFileText && currentFileText && (overwrite === 'merge' || overwrite === 'gen-merge')) {
@@ -98,19 +104,13 @@ function writeFiles({ fileName, baseFileName }, { newFileText, baseFileText }) {
     FS.writeFileSync(baseFileName, baseFileText);
 }
 
-function generate(design, map, options) {
-    Object.entries(map).forEach(([generatedFileName, templateDescription]) => {
-        const { fileName, baseFileName } = manageFileNames(options, generatedFileName);
-        const { baseFileText, currentFileText, newFileText } = generateFileData(
-            options,
-            design,
-            templateDescription,
-            {
-                fileName,
-                baseFileName
-            },
-            map
-        );
+function generate(generator) {
+    Object.entries(generator.map).forEach(([generatedFileName, templateDescription]) => {
+        const { fileName, baseFileName } = manageFileNames(generator.options, generatedFileName);
+        const { baseFileText, currentFileText, newFileText } = generateFileData(generator, templateDescription, {
+            fileName,
+            baseFileName
+        });
         logger.info(`Generating ${fileName} from template ${templateDescription.template}`);
         writeFiles({ fileName, baseFileName }, { currentFileText, baseFileText, newFileText });
     });

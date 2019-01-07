@@ -5,6 +5,7 @@ class Options {
         const getopt = new Getopt([
             ['m', 'map=ARG+', 'mapping files'],
             ['d', 'design=ARG+', 'design files'],
+            ['e', 'extension=ARG+', 'extension directories or files'],
             ['o', 'output=ARG', 'output directory for generated files'],
             ['', 'overwrite=ARG', 'Overwrite modes, can be one of skip, regen, error or merge', 'skip'],
             [
@@ -17,7 +18,7 @@ class Options {
 
         getopt.bindHelp();
 
-        Object.assign(this, { design: [], map: [] }, getopt.parse(processArgs).options, overrideOptions);
+        Object.assign(this, { design: [], map: [], extension: [] }, getopt.parse(processArgs).options, overrideOptions);
     }
 }
 

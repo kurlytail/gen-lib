@@ -3,6 +3,7 @@
 exports[`# options ## constructor ### should parse all options 1`] = `
 Options {
   "design": Array [],
+  "extension": Array [],
   "map": Array [],
   "someOption": Object {},
 }

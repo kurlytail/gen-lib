@@ -2,6 +2,7 @@ import Options from '../options';
 import getDesign from '../design';
 import FS from 'fs';
 import { generate } from '../generate';
+import ExtensionBuilder from '../extension-builder';
 
 import Generator from '../generator';
 
@@ -9,6 +10,7 @@ jest.mock('../options');
 jest.mock('../design');
 jest.mock('fs');
 jest.mock('../generate');
+jest.mock('../extension-builder');
 
 const FIXTURES = {
     NO_OPTIONS: {

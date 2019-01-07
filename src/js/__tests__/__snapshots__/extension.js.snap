@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Extension ## constructor ### should construct default object 1`] = `
+Extension {
+  "_file": "a",
+  "_generator": Object {
+    "design": "b",
+    "map": "c",
+    "options": "d",
+  },
+}
+`;
+
+exports[`# Extension ## load ### should load template from file 1`] = `
+Extension {
+  "_file": "a",
+  "_generator": Object {
+    "design": "b",
+    "map": "c",
+    "options": "d",
+  },
+  "_template": "test template",
+  "_text": "test template",
+}
+`;

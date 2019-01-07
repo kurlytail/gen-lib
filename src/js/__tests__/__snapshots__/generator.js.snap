@@ -6,6 +6,22 @@ Generator {
     "aa": "aa",
     "bb": "bb",
   },
+  "_extensionBuilder": ExtensionBuilder {
+    "_loadOneExtension": [MockFunction],
+    "build": [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    },
+    "getExtensions": [MockFunction],
+    "toString": [MockFunction],
+  },
   "_map": Object {
     "a": Object {
       "template": "a",
@@ -30,6 +46,22 @@ Generator {
     "aa": "aa",
     "bb": "bb",
   },
+  "_extensionBuilder": ExtensionBuilder {
+    "_loadOneExtension": [MockFunction],
+    "build": [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    },
+    "getExtensions": [MockFunction],
+    "toString": [MockFunction],
+  },
   "_map": Object {
     "a": Object {
       "template": "a",
@@ -53,6 +85,22 @@ Generator {
   "_design": Object {
     "bb": "bb",
     "cc": "dddd",
+  },
+  "_extensionBuilder": ExtensionBuilder {
+    "_loadOneExtension": [MockFunction],
+    "build": [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    },
+    "getExtensions": [MockFunction],
+    "toString": [MockFunction],
   },
   "_map": Object {
     "b": Object {
@@ -80,6 +128,22 @@ Generator {
   "_design": Object {
     "aa": "aa",
     "bb": "bb",
+  },
+  "_extensionBuilder": ExtensionBuilder {
+    "_loadOneExtension": [MockFunction],
+    "build": [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    },
+    "getExtensions": [MockFunction],
+    "toString": [MockFunction],
   },
   "_map": Object {
     "a": Object {

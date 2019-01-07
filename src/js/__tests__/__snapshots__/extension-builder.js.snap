@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# ExtensionBuilder ## constructor ### should construct default builder 1`] = `
+Extension {
+  "load": [MockFunction],
+  "toString": [MockFunction],
+}
+`;
+
+exports[`# ExtensionBuilder ## load ### should load template from files and folders 1`] = `
+ExtensionBuilder {
+  "_extensions": Array [
+    Object {
+      "file": "0._/0._/0._",
+      "name": "0",
+    },
+    Object {
+      "file": "0._/0._/1._",
+      "name": "1",
+    },
+    Object {
+      "file": "0._/0._/2._",
+      "name": "2",
+    },
+    Object {
+      "file": "0._/1._",
+      "name": "1",
+    },
+    Object {
+      "file": "0._/2._",
+      "name": "2",
+    },
+    Object {
+      "file": "1._",
+      "name": "1",
+    },
+    Object {
+      "file": "2._",
+      "name": "2",
+    },
+    Object {
+      "file": "3._",
+      "name": "3",
+    },
+    Object {
+      "file": "4._",
+      "name": "4",
+    },
+    Object {
+      "file": "5._",
+      "name": "5",
+    },
+    Object {
+      "file": "6._",
+      "name": "6",
+    },
+    Object {
+      "file": "7._",
+      "name": "7",
+    },
+    Object {
+      "file": "8._",
+      "name": "8",
+    },
+    Object {
+      "file": "9._",
+      "name": "9",
+    },
+  ],
+  "_generator": Object {
+    "design": "b",
+    "map": "c",
+    "options": Object {
+      "extension": Array [
+        "0._",
+        "1._",
+        "2._",
+        "3._",
+        "4._",
+        "5._",
+        "6._",
+        "7._",
+        "8._",
+        "9._",
+      ],
+    },
+  },
+}
+`;

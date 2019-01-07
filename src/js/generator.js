@@ -4,6 +4,7 @@ import FS from 'fs';
 import { generate } from './generate';
 import PATH from 'path';
 import _ from 'underscore';
+import ExtensionBuilder from './extension-builder';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -59,9 +60,11 @@ class Generator {
 
     constructor(design = undefined, map = undefined, overrideOptions = undefined) {
         this._options = new Options(process.argv.slice(2), overrideOptions);
+        this._extensionBuilder = new ExtensionBuilder(this);
         this._loadDesign(design);
         this._loadMaps(map);
         this._checkErrors();
+        this._extensionBuilder.build();
     }
 
     get design() {
@@ -76,8 +79,12 @@ class Generator {
         return this._options;
     }
 
+    get extensionBuilder() {
+        return this._extensionBuilder;
+    }
+
     generate() {
-        return generate(this.design, this.map, this.options);
+        return generate(this);
     }
 }
 

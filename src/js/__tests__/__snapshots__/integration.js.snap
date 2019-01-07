@@ -1,21 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`# integration test ## should generate design 1`] = `
-"info: Generating testoutput/cella from template src/test/fixture/master._
+"info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
 "
 `;
 
 exports[`# integration test ## should generate design with merge 1`] = `
-"info: Generating testoutput/cella from template src/test/fixture/master._
+"info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
 "
 `;
 
 exports[`# integration test ## should generate design with merge 2`] = `
-"info: Generating testoutput/cella from template src/test/fixture/master._
+"info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
 "
@@ -28,6 +34,7 @@ exports[`# integration test ## should print help options 1`] = `
 Options:
   -m, --map=ARG+       mapping files
   -d, --design=ARG+    design files
+  -e, --extension=ARG+ extension directories or files
   -o, --output=ARG     output directory for generated files
       --overwrite=ARG  Overwrite modes, can be one of skip, regen, error or merge                         (default: skip)
       --forceOverwrite Override overwrite flags in the generator map with the one provided on --overwrite

@@ -1,1 +1,3 @@
 Master file
+
+Loading extensions "<%=extension('ext')[0]%>"
