@@ -42,7 +42,10 @@ class ExtensionBuilder {
     }
 
     build() {
-        this._extensions = this.generator.options.extension.reduce((...args) => this._loadOneExtension(...args), []);
+        /* reverse the list so that the last extension is seen first */
+        this._extensions = this.generator.options.extension
+            .reduce((...args) => this._loadOneExtension(...args), [])
+            .reverse();
     }
 
     getExtensions(match) {
