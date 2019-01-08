@@ -5,6 +5,7 @@ import { generate } from './generate';
 import PATH from 'path';
 import _ from 'underscore';
 import ExtensionBuilder from './extension-builder';
+import lodash from 'lodash';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -32,7 +33,15 @@ class Generator {
 
     _loadOneMap(map, mapFile) {
         let mapFileText = FS.readFileSync(mapFile).toString();
-        let newMap = JSON.parse(_.template(mapFileText)({ design: this.design, options: this.options, map }));
+        let newMap = JSON.parse(
+            _.template(mapFileText)({
+                design: this.design,
+                options: this.options,
+                map,
+                extension: matcher => this.extensionBuilder.getExtensions(matcher),
+                lodash
+            })
+        );
 
         // Fixup all file names to global names
         newMap = Object.entries(newMap).reduce((...args) => this._normalizeMapEntry(mapFile, ...args), {});
@@ -62,9 +71,9 @@ class Generator {
         this._options = new Options(process.argv.slice(2), overrideOptions);
         this._extensionBuilder = new ExtensionBuilder(this);
         this._loadDesign(design);
+        this._extensionBuilder.build();
         this._loadMaps(map);
         this._checkErrors();
-        this._extensionBuilder.build();
     }
 
     get design() {
