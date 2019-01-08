@@ -1,1 +1,3 @@
 Top level
+
+<%=lodash.camelCase('test-lodash-integration')%>

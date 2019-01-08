@@ -4,6 +4,7 @@ import mkdirp from 'mkdirp';
 import { merge } from 'node-diff3';
 import logger from './logger';
 import _ from 'underscore';
+import lodash from 'lodash';
 
 function manageFileNames(options, fileName) {
     const outputDirectory = options.output ? options.output : './';
@@ -29,7 +30,8 @@ function generateFileData(generator, templateDescription, { fileName, baseFileNa
         options: generator.options,
         context: templateDescription.context,
         map: generator.map,
-        extension: matcher => generator.extensionBuilder.getExtensions(matcher)
+        extension: matcher => generator.extensionBuilder.getExtensions(matcher),
+        lodash
     });
 
     let currentFileText;

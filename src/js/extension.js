@@ -1,5 +1,6 @@
 import FS from 'fs';
 import _ from 'underscore';
+import lodash from 'lodash';
 
 class Extension {
     constructor(file, generator) {
@@ -13,7 +14,8 @@ class Extension {
             design: this.generator.design,
             options: this.generator.options,
             map: this.generator.map,
-            extension: matcher => this.generator.extensionBuilder.getExtensions(matcher)
+            extension: matcher => this.generator.extensionBuilder.getExtensions(matcher),
+            lodash
         });
 
         return this;
