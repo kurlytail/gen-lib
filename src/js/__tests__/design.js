@@ -1,4 +1,5 @@
 import getDesign from '../design';
+import lodash from 'lodash';
 
 const FIXTURES = {
     jsonDesign: {
@@ -203,7 +204,9 @@ describe('# design', () => {
     describe('## getDesign', () => {
         it('### should transform plain json object', () => {
             const transformedDesign = getDesign(FIXTURES.jsonDesign);
-            expect(transformedDesign).toMatchSnapshot();
+            expect(Object.keys(transformedDesign)).toMatchSnapshot();
+            expect(Object.keys(transformedDesign.Cell[0])).toMatchSnapshot();
+            expect(Object.keys(transformedDesign.Cell[0].Flow[0])).toMatchSnapshot();
         });
     });
 });

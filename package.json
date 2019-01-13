@@ -48,7 +48,7 @@
         "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
         "build-prod": "NODE_ENV=\"production\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
         "lint": "eslint src",
-        "test": "jest tests",
+        "test": "NODE_OPTIONS='--max_old_space_size=4096' jest tests",
         "test:watch": "jest --watch tests",
         "test:ci": "jest --ci tests",
         "clean": "rimraf ./docs ./dist ./coverage test-report.xml"

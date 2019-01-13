@@ -20,9 +20,8 @@ function getDesign(jsonDesign) {
                 const reference = newDesign[value];
                 _.set(newDesign[key], property, reference);
 
-                reference[instance.clazz] = reference[instance.clazz]
-                    ? [...reference[instance.clazz], reference]
-                    : [reference];
+                reference[instance.clazz] = reference[instance.clazz] || [];
+                reference[instance.clazz] = [...reference[instance.clazz], newDesign[key]];
             }
         });
 
