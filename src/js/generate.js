@@ -48,7 +48,12 @@ function generateFileData(generator, templateDescription, { fileName, baseFileNa
     const overwrite = getOverwriteOption(generator.options, templateDescription);
     baseFileText = baseFileText && overwrite !== 'gen-merge' ? baseFileText : '';
 
-    if (baseFileText && currentFileText && (overwrite === 'merge' || overwrite === 'gen-merge')) {
+    if (
+        baseFileText &&
+        currentFileText &&
+        newFileText !== baseFileText &&
+        (overwrite === 'merge' || overwrite === 'gen-merge')
+    ) {
         const merged = merge(currentFileText, baseFileText, newFileText);
         if (merged.conflict) {
             logger.warn(
