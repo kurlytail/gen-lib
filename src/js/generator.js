@@ -111,7 +111,7 @@ class Generator {
             logger.info(`Opening git repository ${gitDirectory}`);
             this._repo = await NodeGit.Repository.open(outputDirectory);
         } else {
-            logger.info(`Initializing git repository ${gitDirectory}`);
+            logger.info(`Initializing git repository ${this.options.output}/.git`);
             this._repo = await NodeGit.Repository.init(outputDirectory, 0);
         }
 
