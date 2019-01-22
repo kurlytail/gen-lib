@@ -1,5 +1,4 @@
 import getDesign from '../design';
-import lodash from 'lodash';
 
 const FIXTURES = {
     jsonDesign: {

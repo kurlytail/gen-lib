@@ -1,7 +1,6 @@
 import FS from 'fs';
 import Extension from '../extension';
 import ExtensionBuilder from '../extension-builder';
-import logger from 'logger';
 
 jest.mock('fs');
 jest.mock('../extension');

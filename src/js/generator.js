@@ -90,6 +90,7 @@ class Generator {
             const oid = await NodeGit.Stash.save(this._repo, this._repo.defaultSignature(), name, 0);
 
             return { branch, oid, name };
+            /* eslint no-empty: "off" */
         } catch (error) {}
 
         return { branch };
@@ -148,17 +149,17 @@ class Generator {
 
         const oid = await index.writeTree();
         const statuses = await this._repo.getStatus();
-        const modified = statuses.reduce((status, statuses) => true, false);
+        const modified = statuses.reduce(() => true, false);
         let commit;
 
         if (modified) {
             const author = NodeGit.Signature.default(this._repo);
             commit = await this._repo.createCommit('HEAD', author, author, 'generated', oid, parent ? [parent] : []);
-            logger.info(`Committed generated files`);
+            logger.info('Committed generated files');
         } else {
             const branch = await this._getCurrentBranch();
             commit = await this._getHeadCommit(branch);
-            logger.warn(`Nothing changed in generated files`);
+            logger.warn('Nothing changed in generated files');
         }
 
         return { modified, commit };
