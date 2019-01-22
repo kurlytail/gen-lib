@@ -16,6 +16,54 @@ info: sgen is done
 "
 `;
 
+exports[`# integration test ## should generate design while deleting older generated files 1`] = `
+"info: Initializing git repository testoutput/.git
+info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
+info: Generating testoutput/cellb from template src/test/fixture/master._
+info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Committed generated files
+info: Attempting to use branch master-sgen-generated
+info: Creating new branch master-sgen-generated
+warn: Checkout out branch master
+warn: Checkout out branch master
+info: sgen is done
+"
+`;
+
+exports[`# integration test ## should generate design while deleting older generated files 2`] = `
+"cella
+cellb
+toplevel
+"
+`;
+
+exports[`# integration test ## should generate design while deleting older generated files 3`] = `
+"info: Opening git repository testoutput/.git
+info: Stashing branch master
+info: Attempting to use branch master-sgen-generated
+warn: Checkout out branch master-sgen-generated
+info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
+info: Generating testoutput/cellb from template src/test/fixture/master._
+info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout out branch master-sgen-generated
+warn: Checkout out branch master-sgen-generated
+warn: Nothing changed in generated files
+warn: Checkout out branch master
+info: sgen is done
+"
+`;
+
+exports[`# integration test ## should generate design while deleting older generated files 4`] = `
+"cella
+cellb
+toplevel
+"
+`;
+
 exports[`# integration test ## should generate design with merge 1`] = `
 "info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._

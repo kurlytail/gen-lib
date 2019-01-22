@@ -1,66 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`# generate ## generateFileData ### should generate template file when base file and edited files present 1`] = `
-Object {
-  "baseFileText": "some template",
-  "currentFileText": "current edited file",
-  "newFileText": "some template",
-}
-`;
+exports[`# generate ## generateFileData ### should generate template file 1`] = `"some template"`;
 
-exports[`# generate ## generateFileData ### should generate template file when base file and edited files present with merge option 1`] = `
-Object {
-  "baseFileText": "some template",
-  "currentFileText": "current edited file",
-  "newFileText": "merged file",
-}
-`;
+exports[`# generate ## manageFileNames ### should return filenames for absolute filename with output options 1`] = `"/test"`;
 
-exports[`# generate ## generateFileData ### should generate template file when base file present and no edited files present 1`] = `
-Object {
-  "baseFileText": "some template",
-  "currentFileText": undefined,
-  "newFileText": "some template",
-}
-`;
+exports[`# generate ## manageFileNames ### should return filenames for filename with no options 1`] = `"test"`;
 
-exports[`# generate ## generateFileData ### should generate template file when no base or edited files present 1`] = `
-Object {
-  "baseFileText": "some template",
-  "currentFileText": undefined,
-  "newFileText": "some template",
-}
-`;
-
-exports[`# generate ## generateFileData ### should throw when base file and edited files present with merge option and merge conflict 1`] = `
-Object {
-  "baseFileText": "some template",
-  "currentFileText": "current edited file",
-  "newFileText": undefined,
-}
-`;
-
-exports[`# generate ## manageFileNames ### should return filenames for absolute filename with output options 1`] = `
-Object {
-  "baseFileName": "some/directory/.generated/test",
-  "fileName": "/test",
-}
-`;
-
-exports[`# generate ## manageFileNames ### should return filenames for filename with no options 1`] = `
-Object {
-  "baseFileName": ".generated/test",
-  "fileName": "test",
-}
-`;
-
-exports[`# generate ## manageFileNames ### should return filenames for filename with output options 1`] = `
-Object {
-  "baseFileName": "some/directory/.generated/test",
-  "fileName": "some/directory/test",
-}
-`;
-
-exports[`# generate ## manageOverwriteState ### should throw an error for merge options and base file does not exist 1`] = `"test already exists"`;
-
-exports[`# generate ## manageOverwriteState ### should throw for error options and current file is modified 1`] = `"test has been modified"`;
+exports[`# generate ## manageFileNames ### should return filenames for filename with output options 1`] = `"some/directory/test"`;

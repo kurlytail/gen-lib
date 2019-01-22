@@ -102,6 +102,20 @@ class Generator {
         }
     }
 
+    async _deleteIndexedFiles() {
+        const index = await this._repo.refreshIndex();
+        await index.removeAll('*');
+        await index.write();
+        await index.writeTree();
+    }
+
+    async _clearIndex() {
+        const index = await this._repo.refreshIndex();
+        await index.clear();
+        await index.write();
+        await index.writeTree();
+    }
+
     async _initRepository() {
         const outputDirectory = PATH.resolve(this.options.output || './');
         const gitDirectory = PATH.join(outputDirectory, '.git');
@@ -178,6 +192,8 @@ class Generator {
             this._generatorBranch = await this._ensureBranch(this.getGeneratorBranchName(), this._userBranch);
             await this._switchToBranch(this._generatorBranch);
         }
+
+        await this._deleteIndexedFiles();
     }
 
     async _finalizeRepository() {
@@ -204,6 +220,7 @@ class Generator {
         if (this._generatorBranch) {
             logger.warn(`Checkout branch ${this._generatorBranchName}`);
             await this._switchToBranch(this._generatorBranch);
+            await this._clearIndex();
         }
         if (this._postCommit) {
             logger.warn(`Revert commit on branch ${this._generatorBranchName}`);

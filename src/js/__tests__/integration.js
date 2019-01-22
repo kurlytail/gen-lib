@@ -44,4 +44,28 @@ describe('# integration test', () => {
         output = output.replace(/warn: Please cherrypick changes from master-sgen-generated from .*/, '');
         expect(output).toMatchSnapshot();
     });
+
+    it('## should generate design while deleting older generated files', () => {
+        let output = execSync(
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+        ).toString();
+        expect(output).toMatchSnapshot();
+
+        execSync('git checkout master-sgen-generated', { cwd: 'testoutput' });
+        execSync('echo "some other change" >> cellc', { cwd: 'testoutput' });
+        execSync('git add cellc', { cwd: 'testoutput' });
+        execSync('git commit -m Test1', { cwd: 'testoutput' });
+        execSync('git checkout master', { cwd: 'testoutput' });
+
+        output = execSync('git ls-files', { cwd: 'testoutput' }).toString();
+        expect(output).toMatchSnapshot();
+
+        output = execSync(
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+        ).toString();
+        expect(output).toMatchSnapshot();
+
+        output = execSync('git ls-files', { cwd: 'testoutput' }).toString();
+        expect(output).toMatchSnapshot();
+    });
 });
