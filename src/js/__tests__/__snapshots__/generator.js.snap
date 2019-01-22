@@ -119,6 +119,7 @@ Generator {
       "a",
       "b",
     ],
+    "output": "output",
   },
 }
 `;
@@ -162,6 +163,7 @@ Generator {
       "a",
       "b",
     ],
+    "output": "output",
   },
 }
 `;

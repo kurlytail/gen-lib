@@ -1,29 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`# integration test ## should generate design 1`] = `
-"info: loading extension src/test/fixture/ext._
+"info: Initializing git repository /Users/ashwin/pmgr/gen-lib/testoutput/.git
+info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Committed generated files
+info: Attempting to use branch master-sgen-generated
+info: Creating new branch master-sgen-generated
+warn: Checkout out branch master
+warn: Checkout out branch master
+info: sgen is done
 "
 `;
 
 exports[`# integration test ## should generate design with merge 1`] = `
-"info: loading extension src/test/fixture/ext._
+"info: Initializing git repository /Users/ashwin/pmgr/gen-lib/testoutput/.git
+info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Committed generated files
+info: Attempting to use branch master-sgen-generated
+info: Creating new branch master-sgen-generated
+warn: Checkout out branch master
+warn: Checkout out branch master
+info: sgen is done
 "
 `;
 
 exports[`# integration test ## should generate design with merge 2`] = `
-"info: loading extension src/test/fixture/ext._
+"info: Opening git repository /Users/ashwin/pmgr/gen-lib/testoutput/.git
+info: Stashing branch master
+info: Attempting to use branch master-sgen-generated
+warn: Checkout out branch master-sgen-generated
+info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generating testoutput/cella from template src/test/fixture/master._
 info: Generating testoutput/cellb from template src/test/fixture/master._
 info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout out branch master-sgen-generated
+warn: Checkout out branch master-sgen-generated
+warn: Nothing changed in generated files
+warn: Checkout out branch master
+info: sgen is done
+"
+`;
+
+exports[`# integration test ## should generate design with merge 3`] = `
+"info: Opening git repository /Users/ashwin/pmgr/gen-lib/testoutput/.git
+info: Stashing branch master
+info: Attempting to use branch master-sgen-generated
+warn: Checkout out branch master-sgen-generated
+info: loading extension src/test/fixture/ext._
+info: loading extension src/test/fixture/toplevel._
+info: Generating testoutput/cella from template src/test/fixture/master._
+info: Generating testoutput/cellb from template src/test/fixture/master._
+info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout out branch master-sgen-generated
+info: Committed generated files
+warn: Checkout out branch master
+warn: Generator branch master-sgen-generated was modified
+warn: Please cherrypick changes from master-sgen-generated from 1729871d4ac5e06be798b869467a684f3be041bd
+info: sgen is done
 "
 `;
 

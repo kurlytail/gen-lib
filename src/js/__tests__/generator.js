@@ -3,6 +3,8 @@ import getDesign from '../design';
 import FS from 'fs';
 import { generate } from '../generate';
 import ExtensionBuilder from '../extension-builder';
+import logger from '../logger';
+import NodeGit from 'nodegit';
 
 import Generator from '../generator';
 
@@ -11,6 +13,7 @@ jest.mock('../design');
 jest.mock('fs');
 jest.mock('../generate');
 jest.mock('../extension-builder');
+jest.mock('../logger');
 
 const FIXTURES = {
     NO_OPTIONS: {
@@ -30,7 +33,8 @@ const FIXTURES = {
 
     ALL_OPTIONS: {
         map: ['a', 'b'],
-        design: ['aa', 'bb']
+        design: ['aa', 'bb'],
+        output: 'output'
     },
 
     MAP: {
@@ -137,16 +141,39 @@ describe('# Generator', () => {
         });
     });
 
-    describe('## generate', () => {
-        it('### should call generate function', () => {
+    /*    describe('## _initializeRepository', () => {
+        afterEach(() => {
+            Options.mockReset();
+            FS.existsSync.mockReset();
+            NodeGit.Repository.init.mockReset();
+            NodeGit.Repository.open.mockReset();
+            NodeGit.Branch.lookup.mockReset();
+            NodeGit.Branch.create.mockReset();
+        });
+
+        it('### should call git init if repo does not exist', async () => {
             Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
-            getDesign.mockReturnValue(FIXTURES.DESIGN);
-            FS.readFileSync.mockReturnValue(FIXTURES.JSON_MAP);
+            FS.existsSync.mockReturnValue(false);
 
             let generator = new Generator();
-            generator.generate();
+            await generator._initializeRepository();
 
-            expect(generate).toHaveBeenCalled();
+            expect(NodeGit.Repository.init).toHaveBeenCalled();
+            expect(NodeGit.Branch.lookup).toHaveBeenCalled();
+            expect(NodeGit.Branch.create).toHaveBeenCalled();
+        });
+
+        it('### should call git open if repo exists', async () => {
+            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
+            FS.existsSync.mockReturnValue(true);
+
+            let generator = new Generator();
+            await generator._initializeRepository();
+
+            expect(NodeGit.Repository.open).toHaveBeenCalled();
+            expect(NodeGit.Branch.lookup).toHaveBeenCalled();
+            expect(NodeGit.Branch.create).toHaveBeenCalled();
         });
     });
+*/
 });
