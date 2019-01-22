@@ -108,7 +108,7 @@ class Generator {
 
         const gitDirectoryExists = FS.existsSync(gitDirectory);
         if (gitDirectoryExists) {
-            logger.info(`Opening git repository ${gitDirectory}`);
+            logger.info(`Opening git repository ${this.options.output}/.git`);
             this._repo = await NodeGit.Repository.open(outputDirectory);
         } else {
             logger.info(`Initializing git repository ${this.options.output}/.git`);
