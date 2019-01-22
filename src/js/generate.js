@@ -1,7 +1,6 @@
 import PATH from 'path';
 import FS from 'fs';
 import mkdirp from 'mkdirp';
-import { merge } from 'node-diff3';
 import logger from './logger';
 import _ from 'underscore';
 import lodash from 'lodash';
@@ -29,7 +28,8 @@ function generateFileData(generator, templateDescription, fileName) {
         context: templateDescription.context,
         map: generator.map,
         extension: matcher => generator.extensionBuilder.getExtensions(matcher),
-        lodash
+        lodash,
+        fileName
     });
 
     return newFileText;

@@ -1,12 +1,10 @@
 import FS from 'fs';
 import mkdirp from 'mkdirp';
-import { merge } from 'node-diff3';
 
 import { getOverwriteOption, manageFileNames, generateFileData } from '../generate';
 
 jest.mock('fs');
 jest.mock('mkdirp');
-jest.mock('node-diff3');
 jest.mock('../logger');
 
 const FIXTURES = {
@@ -15,12 +13,6 @@ const FIXTURES = {
     FILENAMES: '/file',
     EMPTY_GENERATOR: {
         options: {},
-        design: {},
-        map: {},
-        extensionBuilder: {}
-    },
-    MERGE_GENERATOR: {
-        options: { overwrite: 'merge' },
         design: {},
         map: {},
         extensionBuilder: {}
@@ -80,7 +72,6 @@ describe('# generate', () => {
         beforeEach(() => {
             FS.readFileSync.mockReset();
             FS.existsSync.mockReset();
-            merge.mockReturnValue({ conflict: false, result: 'merged file'.split('') });
         });
         it('### should generate template file', () => {
             FS.readFileSync.mockReturnValue('some template');
