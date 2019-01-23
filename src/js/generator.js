@@ -99,6 +99,7 @@ class Generator {
     async _restoreStash(stash) {
         if (stash && stash.oid) {
             await this._switchToBranch(stash.branch);
+            await NodeGit.stash.pop(this._repo, 0, new NodeGit.StashApplyOptions());
         }
     }
 
