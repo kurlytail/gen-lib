@@ -1,0 +1,4 @@
+ ☐ Options to control log output
+ ☐ Options to skip file generation
+ ☐ Options to dry run generators
+ ☐ Mechanism to have pre/post file generation hooks and pre/post code generation hooks

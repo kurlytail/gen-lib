@@ -86,12 +86,19 @@ class Generator {
 
         try {
             const name = uuidv4();
-            logger.info(`Stashing branch ${branch.name}`);
-            const oid = await NodeGit.Stash.save(this._repo, this._repo.defaultSignature(), name, 0);
+            const oid = await NodeGit.Stash.save(
+                this._repo,
+                this._repo.defaultSignature(),
+                name,
+                NodeGit.Stash.FLAGS.INCLUDE_UNTRACKED
+            );
+            logger.info(`Stashed branch ${branch.name}`);
 
             return { branch, oid, name };
             /* eslint no-empty: "off" */
-        } catch (error) {}
+        } catch (error) {
+            logger.warn(`Ignoring error ${error}`);
+        }
 
         return { branch };
     }
@@ -99,7 +106,8 @@ class Generator {
     async _restoreStash(stash) {
         if (stash && stash.oid) {
             await this._switchToBranch(stash.branch);
-            await NodeGit.stash.pop(this._repo, 0, new NodeGit.StashApplyOptions());
+            await NodeGit.Stash.pop(this._repo, 0, new NodeGit.StashApplyOptions());
+            logger.info(`Unstashed branch ${stash.branch.name}`);
         }
     }
 
@@ -213,6 +221,7 @@ class Generator {
         if (this._postCommit.modified && !this._newRepo) {
             logger.warn(`Generator branch ${this._generatorBranch.name} was modified`);
             logger.warn(`Please cherrypick changes from ${this._generatorBranch.name} from ${this._postCommit.commit}`);
+            logger.info(`git cherry-pick ${this._postCommit.commit}`);
         }
     }
 

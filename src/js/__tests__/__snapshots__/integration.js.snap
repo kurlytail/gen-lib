@@ -41,7 +41,7 @@ toplevel
 
 exports[`# integration test ## should generate design while deleting older generated files 3`] = `
 "info: Opening git repository testoutput/.git
-info: Stashing branch master
+warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout out branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
@@ -82,7 +82,7 @@ info: sgen is done
 
 exports[`# integration test ## should generate design with merge 2`] = `
 "info: Opening git repository testoutput/.git
-info: Stashing branch master
+warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout out branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
@@ -100,7 +100,7 @@ info: sgen is done
 
 exports[`# integration test ## should generate design with merge 3`] = `
 "info: Opening git repository testoutput/.git
-info: Stashing branch master
+warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout out branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
