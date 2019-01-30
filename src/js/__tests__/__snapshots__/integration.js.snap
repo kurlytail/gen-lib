@@ -113,7 +113,7 @@ info: Committed generated files
 warn: Checkout out branch master
 warn: Generator branch master-sgen-generated was modified
 
-info: git cherry-pick 8b4a8a41dcf0209f37c7982f4b3c649546ce3a1c
+
 info: sgen is done
 "
 `;
