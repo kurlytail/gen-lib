@@ -273,7 +273,7 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
-        execSync('npm install', { stdio: 'inherit' });
+        execSync('npm install'); // TODO log npm output
         generate(this);
         await this._finalizeRepository();
     }
