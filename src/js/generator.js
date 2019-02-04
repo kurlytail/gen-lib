@@ -9,6 +9,7 @@ import lodash from 'lodash';
 import NodeGit from 'nodegit';
 import logger from './logger';
 import uuidv4 from 'uuid/v4';
+import { execSync } from 'child_process';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -272,6 +273,7 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
+        execSync('npm install', { stdio: 'inherit' });
         generate(this);
         await this._finalizeRepository();
     }
