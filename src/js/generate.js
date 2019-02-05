@@ -39,8 +39,28 @@ function generate(generator) {
     Object.entries(generator.map).forEach(([generatedFileName, templateDescription]) => {
         const fileName = manageFileNames(generator.options, generatedFileName);
         const newFileText = generateFileData(generator, templateDescription, fileName);
-        logger.info(`Generating ${fileName} from template ${templateDescription.template}`);
-        FS.writeFileSync(fileName, newFileText);
+
+        const overwrite = getOverwriteOption(generator.options, templateDescription);
+        const fileExists = FS.existsSync(fileName);
+
+        if (fileExists) {
+            switch (overwrite) {
+                case 'skip':
+                    logger.warn(`Not generating ${fileName}, it already exists`);
+                    break;
+                case 'regen':
+                    FS.writeFileSync(fileName, newFileText);
+                    logger.info(`Overwrite ${fileName} from template ${templateDescription.template}`);
+                    break;
+                case 'error':
+                    throw new Error(`Not overwriting ${fileName}, it already exists`);
+                default:
+                    throw new Error(`Unknown option ${overwrite} for file ${fileName}`);
+            }
+        } else {
+            FS.writeFileSync(fileName, newFileText);
+            logger.info(`Generated ${fileName} from template ${templateDescription.template}`);
+        }
     });
 }
 

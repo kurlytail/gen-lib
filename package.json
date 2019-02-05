@@ -32,7 +32,7 @@
         "jest-junit-reporter": "^1.1.0",
         "jest-localstorage-mock": "^2.2.0",
         "jsdoc": "^3.5.5",
-        "prettier": "^1.10.2",
+        "prettier": "^1.16.0",
         "rewire": "^4.0.1",
         "rimraf": "^2.6.2",
         "source-map-loader": "^0.2.3",

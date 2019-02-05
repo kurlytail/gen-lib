@@ -78,7 +78,7 @@ class Generator {
     }
 
     async _switchToBranch(branch) {
-        logger.warn(`Checkout out branch ${branch.name}`);
+        logger.warn(`Checkout branch ${branch.name}`);
         await this._repo.checkoutRef(branch.data);
     }
 
@@ -91,7 +91,7 @@ class Generator {
                 this._repo,
                 this._repo.defaultSignature(),
                 name,
-                NodeGit.Stash.FLAGS.INCLUDE_UNTRACKED
+                NodeGit.Stash.FLAGS.DEFAULT
             );
             logger.info(`Stashed branch ${branch.name}`);
 
@@ -114,6 +114,13 @@ class Generator {
 
     async _deleteIndexedFiles() {
         const index = await this._repo.refreshIndex();
+        const outputDirectory = PATH.resolve(this.options.output || './');
+
+        index.entries().forEach(entry => {
+            const filePath = `${outputDirectory}/${entry.path}`;
+            if (FS.existsSync(filePath)) FS.unlinkSync(filePath);
+        });
+
         await index.removeAll('*');
         await index.write();
         await index.writeTree();
@@ -127,15 +134,15 @@ class Generator {
     }
 
     async _initRepository() {
-        const outputDirectory = PATH.resolve(this.options.output || './');
+        const outputDirectory = this.options.output || './';
         const gitDirectory = PATH.join(outputDirectory, '.git');
 
         const gitDirectoryExists = FS.existsSync(gitDirectory);
         if (gitDirectoryExists) {
-            logger.info(`Opening git repository ${this.options.output}/.git`);
+            logger.info(`Opening git repository ${gitDirectory}`);
             this._repo = await NodeGit.Repository.open(outputDirectory);
         } else {
-            logger.info(`Initializing git repository ${this.options.output}/.git`);
+            logger.info(`Initializing git repository ${gitDirectory}`);
             this._repo = await NodeGit.Repository.init(outputDirectory, 0);
         }
 
@@ -229,16 +236,16 @@ class Generator {
     async cleanupOnError() {
         logger.warn('Attempting to cleanup on error');
         if (this._generatorBranch) {
-            logger.warn(`Checkout branch ${this._generatorBranchName}`);
+            logger.warn(`Checkout branch ${this._generatorBranch.name}`);
             await this._switchToBranch(this._generatorBranch);
             await this._clearIndex();
         }
         if (this._postCommit) {
-            logger.warn(`Revert commit on branch ${this._generatorBranchName}`);
+            logger.warn(`Revert commit on branch ${this._generatorBranch.name}`);
             await NodeGit.Revert.revert(this._repo, this._postCommit.commit, new NodeGit.RevertOptions());
         }
         if (this._userBranch) {
-            logger.warn(`Checkout branch ${this._userBranchName}`);
+            logger.warn(`Checkout branch ${this._userBranch.name}`);
             await this._switchToBranch(this._userBranch);
         }
         if (this._stash) {

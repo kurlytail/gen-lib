@@ -19,7 +19,7 @@ describe('# integration test', () => {
 
     it('## should generate design with merge', () => {
         let output = execSync(
-            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput'
         ).toString();
         expect(output).toMatchSnapshot();
 
@@ -28,7 +28,7 @@ describe('# integration test', () => {
         execSync('git commit -m Test', { cwd: 'testoutput' });
 
         output = execSync(
-            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput'
         ).toString();
         expect(output).toMatchSnapshot();
 
@@ -39,7 +39,7 @@ describe('# integration test', () => {
         execSync('git checkout master', { cwd: 'testoutput' });
 
         output = execSync(
-            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput '
         ).toString();
         output = output.replace(/warn: Please cherrypick changes from master-sgen-generated from .*/, '');
         output = output.replace(/info: git cherry-pick .*/, '');
@@ -48,7 +48,7 @@ describe('# integration test', () => {
 
     it('## should generate design while deleting older generated files', () => {
         let output = execSync(
-            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput'
         ).toString();
         expect(output).toMatchSnapshot();
 
@@ -62,7 +62,7 @@ describe('# integration test', () => {
         expect(output).toMatchSnapshot();
 
         output = execSync(
-            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=merge'
+            'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=regen'
         ).toString();
         expect(output).toMatchSnapshot();
 
