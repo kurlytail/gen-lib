@@ -4,14 +4,14 @@ exports[`# integration test ## should generate design 1`] = `
 "info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
 info: Creating new branch master-sgen-generated
-warn: Checkout out branch master
-warn: Checkout out branch master
+warn: Checkout branch master
+warn: Checkout branch master
 info: sgen is done
 "
 `;
@@ -20,14 +20,14 @@ exports[`# integration test ## should generate design while deleting older gener
 "info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
 info: Creating new branch master-sgen-generated
-warn: Checkout out branch master
-warn: Checkout out branch master
+warn: Checkout branch master
+warn: Checkout branch master
 info: sgen is done
 "
 `;
@@ -43,16 +43,16 @@ exports[`# integration test ## should generate design while deleting older gener
 "info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
-warn: Checkout out branch master-sgen-generated
+warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
-warn: Checkout out branch master-sgen-generated
-warn: Checkout out branch master-sgen-generated
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout branch master-sgen-generated
+warn: Checkout branch master-sgen-generated
 warn: Nothing changed in generated files
-warn: Checkout out branch master
+warn: Checkout branch master
 info: sgen is done
 "
 `;
@@ -68,14 +68,14 @@ exports[`# integration test ## should generate design with merge 1`] = `
 "info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
 info: Creating new branch master-sgen-generated
-warn: Checkout out branch master
-warn: Checkout out branch master
+warn: Checkout branch master
+warn: Checkout branch master
 info: sgen is done
 "
 `;
@@ -84,16 +84,16 @@ exports[`# integration test ## should generate design with merge 2`] = `
 "info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
-warn: Checkout out branch master-sgen-generated
+warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
-warn: Checkout out branch master-sgen-generated
-warn: Checkout out branch master-sgen-generated
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout branch master-sgen-generated
+warn: Checkout branch master-sgen-generated
 warn: Nothing changed in generated files
-warn: Checkout out branch master
+warn: Checkout branch master
 info: sgen is done
 "
 `;
@@ -102,15 +102,15 @@ exports[`# integration test ## should generate design with merge 3`] = `
 "info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
-warn: Checkout out branch master-sgen-generated
+warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
-info: Generating testoutput/cella from template src/test/fixture/master._
-info: Generating testoutput/cellb from template src/test/fixture/master._
-info: Generating testoutput/toplevel from template src/test/fixture/toplevel._
-warn: Checkout out branch master-sgen-generated
+info: Generated testoutput/cella from template src/test/fixture/master._
+info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
+warn: Checkout branch master-sgen-generated
 info: Committed generated files
-warn: Checkout out branch master
+warn: Checkout branch master
 warn: Generator branch master-sgen-generated was modified
 
 
@@ -127,7 +127,7 @@ Options:
   -d, --design=ARG+    design files
   -e, --extension=ARG+ extension directories or files
   -o, --output=ARG     output directory for generated files
-      --overwrite=ARG  Overwrite modes, can be one of skip, regen, error or merge                         (default: skip)
+      --overwrite=ARG  Overwrite modes, can be one of skip, regen, error                                  (default: error)
       --forceOverwrite Override overwrite flags in the generator map with the one provided on --overwrite
   -h, --help           display this help
 "
