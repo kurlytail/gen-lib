@@ -41,6 +41,7 @@ Array [
   "name",
   "input",
   "output",
+  "_id",
   "Tube",
   "MasterCell",
   "Flow",
@@ -53,5 +54,6 @@ Array [
   "name",
   "cell",
   "tube",
+  "_id",
 ]
 `;

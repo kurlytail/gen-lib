@@ -7,7 +7,7 @@ function getDesign(jsonDesign) {
         const flattened = flatten(jsonDesign[key]);
 
         if (!newDesign[key]) {
-            newDesign[key] = { ...instance };
+            newDesign[key] = { ...instance, _id: key };
         }
 
         Object.keys(flattened).forEach(property => {
