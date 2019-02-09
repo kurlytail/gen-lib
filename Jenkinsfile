@@ -32,7 +32,7 @@ pipeline {
                 checkout scm
 
                 nodejs(nodeJSInstallationName: 'Node') {
-                    sh 'npm install'
+                    sh 'npm install --no-save'
                     sh 'npm version $NPM_VERSION_NUMBER'
                     sh 'npm run lint'
                     sh 'npm run test'
