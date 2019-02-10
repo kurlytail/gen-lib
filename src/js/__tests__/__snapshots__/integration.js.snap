@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`# integration test ## should generate design 1`] = `
-"info: Initializing git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
@@ -17,7 +18,8 @@ info: sgen is done
 `;
 
 exports[`# integration test ## should generate design while deleting older generated files 1`] = `
-"info: Initializing git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
@@ -40,7 +42,8 @@ toplevel
 `;
 
 exports[`# integration test ## should generate design while deleting older generated files 3`] = `
-"info: Opening git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
@@ -65,7 +68,8 @@ toplevel
 `;
 
 exports[`# integration test ## should generate design with merge 1`] = `
-"info: Initializing git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
@@ -81,7 +85,8 @@ info: sgen is done
 `;
 
 exports[`# integration test ## should generate design with merge 2`] = `
-"info: Opening git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
@@ -99,7 +104,8 @@ info: sgen is done
 `;
 
 exports[`# integration test ## should generate design with merge 3`] = `
-"info: Opening git repository testoutput/.git
+"info: loading map src/test/fixture/map.json
+info: Opening git repository testoutput/.git
 warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
