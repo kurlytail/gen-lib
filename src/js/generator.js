@@ -36,6 +36,7 @@ class Generator {
     }
 
     _loadOneMap(map, mapFile) {
+        logger.info(`loading map ${PATH.relative(PATH.resolve('./'), PATH.resolve(mapFile))}`);
         let mapFileText = FS.readFileSync(mapFile).toString();
         let newMap = JSON.parse(
             _.template(mapFileText)({

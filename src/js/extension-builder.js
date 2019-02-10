@@ -53,7 +53,7 @@ class ExtensionBuilder {
             .filter(ext => ext.name.match(match))
             .map(ext => {
                 if (!ext.extension) {
-                    logger.info(`loading extension ${ext.file}`);
+                    logger.info(`loading extension ${PATH.relative(PATH.resolve('./'), PATH.resolve(ext.file))}`);
                     ext.extension = new Extension(ext.file, this.generator).load();
                 }
                 return ext.extension.text;
