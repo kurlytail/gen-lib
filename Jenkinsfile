@@ -51,4 +51,11 @@ pipeline {
             }
         }
     }
+
+
+    post {
+        always {
+            slackSend message: "gen-lib build ${env.NPM_VERSION_NUMBER} - Status ${currentBuild.result} - ${env.BUILD_URL}"
+        }
+    }
 }
