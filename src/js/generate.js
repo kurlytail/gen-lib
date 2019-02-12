@@ -36,6 +36,8 @@ function generateFileData(generator, templateDescription, fileName) {
 }
 
 function generate(generator) {
+    const generatedFiles = [];
+
     Object.entries(generator.map).forEach(([generatedFileName, templateDescription]) => {
         const fileName = manageFileNames(generator.options, generatedFileName);
         const newFileText = generateFileData(generator, templateDescription, fileName);
@@ -61,7 +63,11 @@ function generate(generator) {
             FS.writeFileSync(fileName, newFileText);
             logger.info(`Generated ${fileName} from template ${templateDescription.template}`);
         }
+
+        generatedFiles.push(fileName);
     });
+
+    return generatedFiles;
 }
 
 export { generate, getOverwriteOption, manageFileNames, generateFileData };

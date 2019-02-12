@@ -64,6 +64,8 @@ describe('# integration test', () => {
         output = execSync(
             'babel-node -- ./src/js/sgen.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput --overwrite=regen'
         ).toString();
+        output = output.replace(/warn: Please cherrypick changes from master-sgen-generated from .*/, '');
+        output = output.replace(/info: git cherry-pick .*/, '');
         expect(output).toMatchSnapshot();
 
         output = execSync('git ls-files', { cwd: 'testoutput' }).toString();

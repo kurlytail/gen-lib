@@ -118,7 +118,7 @@ class Generator {
         const outputDirectory = PATH.resolve(this.options.output || './');
 
         index.entries().forEach(entry => {
-            const filePath = `${outputDirectory}/${entry.path}`;
+            const filePath = PATH.join(outputDirectory, entry.path);
             if (FS.existsSync(filePath)) FS.unlinkSync(filePath);
         });
 
@@ -174,9 +174,30 @@ class Generator {
         return `${this._userBranch.name}-sgen-generated`;
     }
 
-    async _commit(parent) {
+    async _commit(generatedFiles, parent) {
+        const outputDirectory = this.options.output || './';
         const index = await this._repo.refreshIndex();
-        await index.addAll('*');
+        const filesToDelete = [];
+
+        index.entries().forEach(entry => {
+            const filePath = PATH.join(outputDirectory, entry.path);
+            if (!_.contains(generatedFiles, filePath)) {
+                filesToDelete.push(entry.path);
+            }
+        });
+
+        for (var ii in filesToDelete) {
+            const fileName = filesToDelete[ii];
+            const filePath = PATH.join(outputDirectory, fileName);
+            await index.removeByPath(fileName);
+            if (FS.existsSync(filePath)) FS.unlinkSync(filePath);
+        }
+
+        for (var ii in generatedFiles) {
+            const fileName = PATH.relative(outputDirectory, generatedFiles[ii]);
+            await index.addByPath(fileName);
+        }
+
         await index.write();
 
         const oid = await index.writeTree();
@@ -214,14 +235,14 @@ class Generator {
         await this._deleteIndexedFiles();
     }
 
-    async _finalizeRepository() {
+    async _finalizeRepository(generatedFiles) {
         if (this._newRepo) {
-            this._postCommit = await this._commit();
+            this._postCommit = await this._commit(generatedFiles);
             this._userBranch = await this._getCurrentBranch();
             this._generatorBranch = await this._ensureBranch(this.getGeneratorBranchName(), this._userBranch);
         } else {
             const parent = await this._getHeadCommit(this._generatorBranch);
-            this._postCommit = await this._commit(parent);
+            this._postCommit = await this._commit(generatedFiles, parent);
         }
 
         await this._restoreStash(this._stash);
@@ -281,8 +302,8 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
-        generate(this);
-        await this._finalizeRepository();
+        const generatedFiles = generate(this);
+        await this._finalizeRepository(generatedFiles);
     }
 }
 
