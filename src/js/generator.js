@@ -210,6 +210,8 @@ class Generator {
             this._generatorBranch = await this._ensureBranch(this.getGeneratorBranchName(), this._userBranch);
             await this._switchToBranch(this._generatorBranch);
         }
+
+        await this._deleteIndexedFiles();
     }
 
     async _finalizeRepository() {
@@ -279,8 +281,6 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
-        execSync('npm install'); // TODO log npm output
-        await this._deleteIndexedFiles();
         generate(this);
         await this._finalizeRepository();
     }
