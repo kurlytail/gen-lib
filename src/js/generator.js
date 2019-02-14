@@ -10,6 +10,7 @@ import NodeGit from 'nodegit';
 import logger from './logger';
 import uuidv4 from 'uuid/v4';
 import { execSync } from 'child_process';
+import prettier from 'prettier';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -302,7 +303,9 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
-        const generatedFiles = generate(this);
+        const outputDirectory = this.options.output || './';
+        const prettierOptions = await prettier.resolveConfig(outputDirectory);
+        const generatedFiles = generate(this, prettierOptions);
         await this._finalizeRepository(generatedFiles);
     }
 }

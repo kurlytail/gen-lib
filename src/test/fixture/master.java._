@@ -1,0 +1,121 @@
+package com.brainspeedtech.pmgr.cells;
+
+import reactor.core.publisher.Flux;
+
+import com.brainspeedtech.pmgr.tubes.EnterpriseEnvironmentalFactorsAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.OrganizationalProcessAssetsAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.RolesAndResponsibilitiesAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.ProjectOrganizationalChartsAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.StaffingManagementPlanAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.ToolPreassignmentAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.ToolNegotiationAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.ToolAcquisitionAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.ToolVirtualTeamsAcquireProjectTeam;
+
+import com.brainspeedtech.pmgr.tubes.AcquireProjectTeamProjectStaffAssignments;
+
+import com.brainspeedtech.pmgr.tubes.AcquireProjectTeamResourceAvailability;
+
+import com.brainspeedtech.pmgr.tubes.AcquireProjectTeamStaffingManagementPlan;
+
+
+public class AcquireProjectTeam {
+
+
+    private Flux<EnterpriseEnvironmentalFactorsAcquireProjectTeam> inputTubeEnterpriseEnvironmentalFactorsAcquireProjectTeam = Flux.empty();
+    public void setTubeEnterpriseEnvironmentalFactorsAcquireProjectTeam(Flux<EnterpriseEnvironmentalFactorsAcquireProjectTeam> input) {
+        this.inputTubeEnterpriseEnvironmentalFactorsAcquireProjectTeam = input;
+    }
+
+    private Flux<OrganizationalProcessAssetsAcquireProjectTeam> inputTubeOrganizationalProcessAssetsAcquireProjectTeam = Flux.empty();
+    public void setTubeOrganizationalProcessAssetsAcquireProjectTeam(Flux<OrganizationalProcessAssetsAcquireProjectTeam> input) {
+        this.inputTubeOrganizationalProcessAssetsAcquireProjectTeam = input;
+    }
+
+    private Flux<RolesAndResponsibilitiesAcquireProjectTeam> inputTubeRolesAndResponsibilitiesAcquireProjectTeam = Flux.empty();
+    public void setTubeRolesAndResponsibilitiesAcquireProjectTeam(Flux<RolesAndResponsibilitiesAcquireProjectTeam> input) {
+        this.inputTubeRolesAndResponsibilitiesAcquireProjectTeam = input;
+    }
+
+    private Flux<ProjectOrganizationalChartsAcquireProjectTeam> inputTubeProjectOrganizationalChartsAcquireProjectTeam = Flux.empty();
+    public void setTubeProjectOrganizationalChartsAcquireProjectTeam(Flux<ProjectOrganizationalChartsAcquireProjectTeam> input) {
+        this.inputTubeProjectOrganizationalChartsAcquireProjectTeam = input;
+    }
+
+    private Flux<StaffingManagementPlanAcquireProjectTeam> inputTubeStaffingManagementPlanAcquireProjectTeam = Flux.empty();
+    public void setTubeStaffingManagementPlanAcquireProjectTeam(Flux<StaffingManagementPlanAcquireProjectTeam> input) {
+        this.inputTubeStaffingManagementPlanAcquireProjectTeam = input;
+    }
+
+    private Flux<ToolPreassignmentAcquireProjectTeam> inputTubeToolPreassignmentAcquireProjectTeam = Flux.empty();
+    public void setTubeToolPreassignmentAcquireProjectTeam(Flux<ToolPreassignmentAcquireProjectTeam> input) {
+        this.inputTubeToolPreassignmentAcquireProjectTeam = input;
+    }
+
+    private Flux<ToolNegotiationAcquireProjectTeam> inputTubeToolNegotiationAcquireProjectTeam = Flux.empty();
+    public void setTubeToolNegotiationAcquireProjectTeam(Flux<ToolNegotiationAcquireProjectTeam> input) {
+        this.inputTubeToolNegotiationAcquireProjectTeam = input;
+    }
+
+    private Flux<ToolAcquisitionAcquireProjectTeam> inputTubeToolAcquisitionAcquireProjectTeam = Flux.empty();
+    public void setTubeToolAcquisitionAcquireProjectTeam(Flux<ToolAcquisitionAcquireProjectTeam> input) {
+        this.inputTubeToolAcquisitionAcquireProjectTeam = input;
+    }
+
+    private Flux<ToolVirtualTeamsAcquireProjectTeam> inputTubeToolVirtualTeamsAcquireProjectTeam = Flux.empty();
+    public void setTubeToolVirtualTeamsAcquireProjectTeam(Flux<ToolVirtualTeamsAcquireProjectTeam> input) {
+        this.inputTubeToolVirtualTeamsAcquireProjectTeam = input;
+    }
+
+
+    public void wireTubes() {
+    }
+
+    public AcquireProjectTeam() {}
+
+    public AcquireProjectTeam(
+        Flux<EnterpriseEnvironmentalFactorsAcquireProjectTeam> inputTubeEnterpriseEnvironmentalFactorsAcquireProjectTeam,
+        Flux<OrganizationalProcessAssetsAcquireProjectTeam> inputTubeOrganizationalProcessAssetsAcquireProjectTeam,
+        Flux<RolesAndResponsibilitiesAcquireProjectTeam> inputTubeRolesAndResponsibilitiesAcquireProjectTeam,
+        Flux<ProjectOrganizationalChartsAcquireProjectTeam> inputTubeProjectOrganizationalChartsAcquireProjectTeam,
+        Flux<StaffingManagementPlanAcquireProjectTeam> inputTubeStaffingManagementPlanAcquireProjectTeam,
+        Flux<ToolPreassignmentAcquireProjectTeam> inputTubeToolPreassignmentAcquireProjectTeam,
+        Flux<ToolNegotiationAcquireProjectTeam> inputTubeToolNegotiationAcquireProjectTeam,
+        Flux<ToolAcquisitionAcquireProjectTeam> inputTubeToolAcquisitionAcquireProjectTeam,
+        Flux<ToolVirtualTeamsAcquireProjectTeam> inputTubeToolVirtualTeamsAcquireProjectTeam
+    ) {
+
+
+        this.tubeAcquireProjectTeamProjectStaffAssignments = Flux.just(new AcquireProjectTeamProjectStaffAssignments());
+
+        this.tubeAcquireProjectTeamResourceAvailability = Flux.just(new AcquireProjectTeamResourceAvailability());
+
+        this.tubeAcquireProjectTeamStaffingManagementPlan = Flux.just(new AcquireProjectTeamStaffingManagementPlan());
+
+    }
+
+
+    private Flux<AcquireProjectTeamProjectStaffAssignments> tubeAcquireProjectTeamProjectStaffAssignments;
+    public Flux<AcquireProjectTeamProjectStaffAssignments> getTubeAcquireProjectTeamProjectStaffAssignments() {
+        return this.tubeAcquireProjectTeamProjectStaffAssignments;
+    }
+
+    private Flux<AcquireProjectTeamResourceAvailability> tubeAcquireProjectTeamResourceAvailability;
+    public Flux<AcquireProjectTeamResourceAvailability> getTubeAcquireProjectTeamResourceAvailability() {
+        return this.tubeAcquireProjectTeamResourceAvailability;
+    }
+
+    private Flux<AcquireProjectTeamStaffingManagementPlan> tubeAcquireProjectTeamStaffingManagementPlan;
+    public Flux<AcquireProjectTeamStaffingManagementPlan> getTubeAcquireProjectTeamStaffingManagementPlan() {
+        return this.tubeAcquireProjectTeamStaffingManagementPlan;
+    }
+
+}

@@ -7,6 +7,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
@@ -24,6 +30,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
@@ -36,7 +48,13 @@ info: sgen is done
 
 exports[`# integration test ## should generate design while deleting older generated files 2`] = `
 "cella
+cella.java
+cella.js
+cella.xml
 cellb
+cellb.java
+cellb.js
+cellb.xml
 toplevel
 "
 `;
@@ -51,6 +69,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 warn: Checkout branch master-sgen-generated
 info: Committed generated files
@@ -64,7 +88,13 @@ info: sgen is done
 
 exports[`# integration test ## should generate design while deleting older generated files 4`] = `
 "cella
+cella.java
+cella.js
+cella.xml
 cellb
+cellb.java
+cellb.js
+cellb.xml
 toplevel
 "
 `;
@@ -76,6 +106,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 info: Committed generated files
 info: Attempting to use branch master-sgen-generated
@@ -96,6 +132,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 warn: Checkout branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
@@ -115,6 +157,12 @@ info: loading extension src/test/fixture/ext._
 info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
+info: Generated testoutput/cella.js from template src/test/fixture/master.js._
+info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
+info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
+info: Generated testoutput/cella.java from template src/test/fixture/master.java._
+info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
 info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
 warn: Checkout branch master-sgen-generated
 info: Committed generated files

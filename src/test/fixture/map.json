@@ -4,6 +4,21 @@
         "template" : "master._"
     },
 <%});%>
+<%design.MasterCell.forEach(cell => {%>
+    "<%=cell.name%>.js" : {
+        "template" : "master.js._"
+    },
+<%});%>
+<%design.MasterCell.forEach(cell => {%>
+    "<%=cell.name%>.xml" : {
+        "template" : "master.xml._"
+    },
+<%});%>
+<%design.MasterCell.forEach(cell => {%>
+    "<%=cell.name%>.java" : {
+        "template" : "master.java._"
+    },
+<%});%>
     "toplevel" : {
         "template" : "toplevel._"
     }
