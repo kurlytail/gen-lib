@@ -4,7 +4,6 @@ exports[`# integration test ## should generate design 1`] = `
 "info: loading map src/test/fixture/map.json
 info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._
@@ -27,7 +26,6 @@ exports[`# integration test ## should generate design while deleting older gener
 "info: loading map src/test/fixture/map.json
 info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._
@@ -66,7 +64,6 @@ warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._
@@ -103,7 +100,6 @@ exports[`# integration test ## should generate design with merge 1`] = `
 "info: loading map src/test/fixture/map.json
 info: Initializing git repository testoutput/.git
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._
@@ -129,7 +125,6 @@ warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._
@@ -154,7 +149,6 @@ warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
 info: Attempting to use branch master-sgen-generated
 warn: Checkout branch master-sgen-generated
 info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
 info: Generated testoutput/cella from template src/test/fixture/master._
 info: Generated testoutput/cellb from template src/test/fixture/master._
 info: Generated testoutput/cella.js from template src/test/fixture/master.js._

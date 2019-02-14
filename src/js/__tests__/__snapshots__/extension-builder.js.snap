@@ -2,6 +2,7 @@
 
 exports[`# ExtensionBuilder ## constructor ### should construct default builder 1`] = `
 Extension {
+  "generate": [MockFunction],
   "load": [MockFunction],
   "toString": [MockFunction],
 }

@@ -5,6 +5,7 @@ Extension {
   "_file": "a",
   "_generator": Object {
     "design": "b",
+    "labels": Array [],
     "map": "c",
     "options": "d",
   },
@@ -16,10 +17,16 @@ Extension {
   "_file": "a",
   "_generator": Object {
     "design": "b",
+    "labels": Array [],
     "map": "c",
     "options": "d",
   },
   "_template": "test template",
-  "_text": "test template",
 }
 `;
+
+exports[`# Extension ## template ### should generate extension 1`] = `"test template \\"test\\""`;
+
+exports[`# Extension ## template ### should generate extension 2`] = `"test template "`;
+
+exports[`# Extension ## template ### should generate extension 3`] = `"test template \\"test\\"\\"test2\\""`;

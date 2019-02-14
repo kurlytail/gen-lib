@@ -45,7 +45,8 @@ class Generator {
                 options: this.options,
                 map,
                 extension: matcher => this.extensionBuilder.getExtensions(matcher),
-                lodash
+                lodash,
+                labels: []
             })
         );
 
@@ -299,6 +300,14 @@ class Generator {
 
     get extensionBuilder() {
         return this._extensionBuilder;
+    }
+
+    get labels() {
+        return this._labels || [];
+    }
+
+    set labels(labels) {
+        this._labels = labels;
     }
 
     async generate() {

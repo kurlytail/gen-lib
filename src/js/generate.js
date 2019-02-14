@@ -30,7 +30,8 @@ function generateFileData(generator, templateDescription, fileName) {
         map: generator.map,
         extension: matcher => generator.extensionBuilder.getExtensions(matcher),
         lodash,
-        fileName
+        fileName,
+        labels: []
     });
 
     return newFileText;
