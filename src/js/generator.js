@@ -9,7 +9,6 @@ import lodash from 'lodash';
 import NodeGit from 'nodegit';
 import logger from './logger';
 import uuidv4 from 'uuid/v4';
-import { execSync } from 'child_process';
 import prettier from 'prettier';
 
 class Generator {
@@ -188,14 +187,14 @@ class Generator {
             }
         });
 
-        for (var ii in filesToDelete) {
+        for (let ii in filesToDelete) {
             const fileName = filesToDelete[ii];
             const filePath = PATH.join(outputDirectory, fileName);
             await index.removeByPath(fileName);
             if (FS.existsSync(filePath)) FS.unlinkSync(filePath);
         }
 
-        for (var ii in generatedFiles) {
+        for (let ii in generatedFiles) {
             const fileName = PATH.relative(outputDirectory, generatedFiles[ii]);
             await index.addByPath(fileName);
         }
