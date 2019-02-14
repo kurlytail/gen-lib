@@ -93,6 +93,7 @@ const configSgen = Object.assign({}, config, {
     externals: [
         (context, request, callback) => {
             if (/^nodegit/.test(request)) return callback(null, 'commonjs' + ' ' + request);
+            if (/^prettier/.test(request)) return callback(null, 'commonjs' + ' ' + request);
             callback();
         }
     ],
