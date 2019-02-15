@@ -9,7 +9,7 @@ import lodash from 'lodash';
 import NodeGit from 'nodegit';
 import logger from './logger';
 import uuidv4 from 'uuid/v4';
-import prettier from 'prettier';
+import { execSync } from 'child_process';
 
 class Generator {
     _loadOneDesign(design, designFile) {
@@ -311,9 +311,11 @@ class Generator {
 
     async generate() {
         await this._setupRepository();
-        const outputDirectory = this.options.output || './';
-        const prettierOptions = await prettier.resolveConfig(outputDirectory);
-        const generatedFiles = generate(this, prettierOptions);
+        const generatedFiles = generate(this);
+        try {
+            execSync(generatedFiles.reduce((cmd, file) => cmd + ' ' + file, 'prettier --write '));
+        } catch (err) {}
+
         await this._finalizeRepository(generatedFiles);
     }
 }

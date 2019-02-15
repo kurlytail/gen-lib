@@ -89,14 +89,9 @@ const configLib = Object.assign({}, config, {
         lib: './src/js/index.js'
     }
 });
+
 const configSgen = Object.assign({}, config, {
-    externals: [
-        (context, request, callback) => {
-            if (/^nodegit/.test(request)) return callback(null, 'commonjs' + ' ' + request);
-            if (/^prettier/.test(request)) return callback(null, 'commonjs' + ' ' + request);
-            callback();
-        }
-    ],
+    externals: [nodeExternals()],
     entry: {
         sgen: './src/js/sgen.js'
     }
