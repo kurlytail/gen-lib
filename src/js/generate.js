@@ -27,7 +27,7 @@ function generateFileData(generator, templateDescription, fileName) {
         options: generator.options,
         context: templateDescription.context,
         map: generator.map,
-        extension: matcher => generator.extensionBuilder.getExtensions(matcher),
+        extension: (matcher, labels) => generator.extensionBuilder.getExtensions(matcher, labels),
         lodash,
         fileName,
         labels: []

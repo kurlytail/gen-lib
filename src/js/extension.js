@@ -29,7 +29,7 @@ class Extension {
             design: this.generator.design,
             options: this.generator.options,
             map: this.generator.map,
-            extension: matcher => this.generator.extensionBuilder.getExtensions(matcher),
+            extension: (matcher, labels) => this.generator.extensionBuilder.getExtensions(matcher, labels),
             lodash,
             labels: this.generator.labels
         });
