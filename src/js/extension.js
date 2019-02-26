@@ -13,7 +13,7 @@ class Extension {
         return this;
     }
 
-    generate(labels) {
+    generate(labels, templateDescription) {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -29,7 +29,9 @@ class Extension {
             design: this.generator.design,
             options: this.generator.options,
             map: this.generator.map,
-            extension: (matcher, labels) => this.generator.extensionBuilder.getExtensions(matcher, labels),
+            context: templateDescription.context,
+            extension: (matcher, labels) =>
+                this.generator.extensionBuilder.getExtensions(matcher, labels, templateDescription),
             lodash,
             labels: this.generator.labels
         });

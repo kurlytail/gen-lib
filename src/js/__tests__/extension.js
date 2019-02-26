@@ -4,7 +4,10 @@ import Extension from '../extension';
 jest.mock('fs');
 
 const FIXTURES = {
-    GENERATOR: { design: 'b', map: 'c', options: 'd', labels: [] }
+    GENERATOR: { design: 'b', map: 'c', options: 'd', labels: [] },
+    TEMPLATEDESCRIPTION: {
+        context: 'test'
+    }
 };
 
 describe('# Extension', () => {
@@ -29,17 +32,17 @@ describe('# Extension', () => {
 
     describe('## template', () => {
         it('### should generate extension', () => {
-            FS.readFileSync.mockReturnValue('test template <%labels.forEach(lab => {%>"<%=lab%>"<%})%>');
+            FS.readFileSync.mockReturnValue('test template <%labels.forEach(lab => {%>"<%=lab%>"<%})%> <%=context%>');
             const extension = new Extension('a', FIXTURES.GENERATOR);
             extension.load();
 
-            let text = extension.generate('test');
+            let text = extension.generate('test', FIXTURES.TEMPLATEDESCRIPTION);
             expect(text).toMatchSnapshot();
 
-            text = extension.generate();
+            text = extension.generate(undefined, FIXTURES.TEMPLATEDESCRIPTION);
             expect(text).toMatchSnapshot();
 
-            text = extension.generate(['test', 'test2']);
+            text = extension.generate(['test', 'test2'], FIXTURES.TEMPLATEDESCRIPTION);
             expect(text).toMatchSnapshot();
         });
     });

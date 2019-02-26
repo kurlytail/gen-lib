@@ -48,7 +48,7 @@ class ExtensionBuilder {
             .reverse();
     }
 
-    getExtensions(match, labels) {
+    getExtensions(match, labels, templateDescription) {
         return this.extensions
             .filter(ext => ext.name.match(match))
             .map(ext => {
@@ -56,7 +56,7 @@ class ExtensionBuilder {
                     logger.info(`loading extension ${PATH.relative(PATH.resolve('./'), PATH.resolve(ext.file))}`);
                     ext.extension = new Extension(ext.file, this.generator).load();
                 }
-                return ext.extension.generate(labels);
+                return ext.extension.generate(labels, templateDescription);
             });
     }
 
