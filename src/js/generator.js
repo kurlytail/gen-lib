@@ -43,7 +43,7 @@ class Generator {
                 design: this.design,
                 options: this.options,
                 map,
-                extension: (matcher, labels) => this.extensionBuilder.getExtensions(matcher, labels),
+                extension: (matcher, labels) => this.extensionBuilder.getExtensions(matcher, labels, {}),
                 lodash,
                 labels: []
             })
