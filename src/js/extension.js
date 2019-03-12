@@ -7,20 +7,23 @@ import lodash from 'lodash';
 class Extension {
 
     _file: string;
+    // eslint-disable-next-line flowtype/no-weak-types
     _generator: Object;
     _template: string;
 
+    // eslint-disable-next-line flowtype/no-weak-types
     constructor(file: string, generator: Object) {
         this._file = file;
         this._generator = generator;
     }
 
-    load() {
+    load(): Extension {
         this._template = FS.readFileSync(this.file).toString();
         return this;
     }
 
-    generate(labels: any, templateDescription: Object) {
+    // eslint-disable-next-line flowtype/no-weak-types
+    generate(labels: any, templateDescription: Object): string {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -37,7 +40,7 @@ class Extension {
             options: this.generator.options,
             map: this.generator.map,
             context: templateDescription.context,
-            extension: (matcher, labels) =>
+            extension: (matcher: string, labels: Array<string>): Array<string> =>
                 this.generator.extensionBuilder.getExtensions(matcher, labels, templateDescription),
             lodash,
             labels: this.generator.labels
@@ -47,19 +50,20 @@ class Extension {
         return generatedText;
     }
 
-    get file() {
+    get file(): string {
         return this._file;
     }
 
-    get template() {
+    get template(): string {
         return this._template;
     }
 
-    get generator() {
+    // eslint-disable-next-line flowtype/no-weak-types
+    get generator(): Object {
         return this._generator;
     }
 
-    toString() {
+    toString(): string {
         return this._file;
     }
 }
