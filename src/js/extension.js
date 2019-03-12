@@ -1,9 +1,16 @@
+// @flow
+
 import FS from 'fs';
 import _ from 'underscore';
 import lodash from 'lodash';
 
 class Extension {
-    constructor(file, generator) {
+
+    _file: string;
+    _generator: Object;
+    _template: string;
+
+    constructor(file: string, generator: Object) {
         this._file = file;
         this._generator = generator;
     }
@@ -13,7 +20,7 @@ class Extension {
         return this;
     }
 
-    generate(labels, templateDescription) {
+    generate(labels: any, templateDescription: Object) {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -53,7 +60,7 @@ class Extension {
     }
 
     toString() {
-        return this.text;
+        return this._file;
     }
 }
 

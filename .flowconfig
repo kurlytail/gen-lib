@@ -1,0 +1,13 @@
+[ignore]
+<PROJECT_ROOT>/.*/test/.*
+<PROJECT_ROOT>/.*/tests/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

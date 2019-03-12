@@ -13,6 +13,7 @@
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-preset-env": "^1.6.1",
+        "babel-preset-flow": "^6.23.0",
         "babel-register": "^6.26.0",
         "chalk": "^2.4.1",
         "circular-dependency-plugin": "^4.2.1",
@@ -27,6 +28,7 @@
         "eslint-plugin-prettier": "^2.3.1",
         "exports-loader": "^0.7.0",
         "file-loader": "^1.1.6",
+        "flow-bin": "^0.94.0",
         "imports-loader": "^0.8.0",
         "jest": "^23.6.0",
         "jest-junit-reporter": "^1.1.0",
@@ -40,8 +42,8 @@
         "uglifyjs-webpack-plugin": "^1.0.0",
         "uuid": "^3.1.0",
         "webpack": "^3.5.5",
-        "webpack-permissions-plugin": "^1.0.0",
-        "webpack-node-externals": "^1.7.2"
+        "webpack-node-externals": "^1.7.2",
+        "webpack-permissions-plugin": "^1.0.0"
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
