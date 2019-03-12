@@ -1,8 +1,11 @@
+// @flow
 import _ from 'lodash';
 import flatten from 'flat';
 
-function getDesign(jsonDesign) {
-    const normalizedDesign = Object.keys(jsonDesign).reduce((newDesign, key) => {
+// eslint-disable-next-line flowtype/no-weak-types
+function getDesign(jsonDesign: Object): Object {
+    // eslint-disable-next-line flowtype/no-weak-types
+    const normalizedDesign = Object.keys(jsonDesign).reduce((newDesign: Object, key: string): Object => {
         const instance = jsonDesign[key];
         const flattened = flatten(jsonDesign[key]);
 
@@ -10,7 +13,7 @@ function getDesign(jsonDesign) {
             newDesign[key] = { ...instance, _id: key };
         }
 
-        Object.keys(flattened).forEach(property => {
+        Object.keys(flattened).forEach((property: string) => {
             const value = flattened[property];
             if (typeof value === 'string' && jsonDesign[value] && value !== key) {
                 if (!newDesign[value]) {
