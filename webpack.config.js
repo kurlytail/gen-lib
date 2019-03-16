@@ -65,10 +65,6 @@ const config = {
         ]
     },
 
-    resolve: {
-        extensions: ['.js']
-    },
-
     target: 'node'
 };
 

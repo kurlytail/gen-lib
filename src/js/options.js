@@ -23,19 +23,14 @@ class Options {
             ['d', 'design=ARG+', 'design files'],
             ['e', 'extension=ARG+', 'extension directories or files'],
             ['o', 'output=ARG', 'output directory for generated files'],
-            ['g', 'generator=ARG', 'generators to be used']
+            ['g', 'generator=ARG+', 'generators to be used']
         ]);
 
         getopt.bindHelp();
 
         Object.assign(
             this,
-            {
-                design: [],
-                map: [],
-                extension: [],
-                generator: []
-            },
+            { design: [], map: [], extension: [], generator: [] },
             getopt.parse(processArgs).options,
             overrideOptions
         );

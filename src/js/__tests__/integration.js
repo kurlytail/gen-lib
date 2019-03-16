@@ -11,6 +11,15 @@ describe('# integration test', () => {
         expect(output).toMatchSnapshot();
     });
 
+    it('## should error out when downstream generator not found', () => {
+        execSync('npm run build');
+        expect(() =>
+            execSync(
+                './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -g some-generator'
+            )
+        ).toThrow();
+    });
+
     it('## should generate design', () => {
         execSync('npm run build');
         const output = execSync(

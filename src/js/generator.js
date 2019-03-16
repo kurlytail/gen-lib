@@ -34,6 +34,36 @@ class Generator {
         this._design = getDesign(rawDesign);
     }
 
+    _loadGeneratorPackages() {
+        const processedPackages = [];
+        // eslint-disable-next-line no-undef
+        const requireFunc = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require;
+        do {
+            // Dont use sets because this loop needs to be order preserving
+            this.options.generator.forEach(pack => {
+
+                if (processedPackages.includes(pack)) return;
+
+                let packageName = `@kurlytail/gen-${pack}`;
+                let options;
+
+                try {
+                    options = requireFunc(packageName);
+                } catch (err) {
+                    packageName = `gen-${pack}`;
+                    options = requireFunc(packageName);
+                }
+
+                logger.info(
+                    `Loaded generator ${packageName}@${options.version}`
+                );
+                this.options.merge(options);
+                processedPackages.push(pack);
+            });
+
+        } while (_.difference(this.options.generator, processedPackages).length !== 0);
+    }
+
     _normalizeMapEntry(mapFile, map, [fileName, templateDescription]) {
         const templateFile = templateDescription.template;
         let template = PATH.relative(
@@ -337,6 +367,7 @@ class Generator {
         overrideOptions = undefined
     ) {
         this._options = new Options(process.argv.slice(2), overrideOptions);
+        this._loadGeneratorPackages();
         this._extensionBuilder = new ExtensionBuilder(this);
         this._loadDesign(design);
         this._extensionBuilder.build();

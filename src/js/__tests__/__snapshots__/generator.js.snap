@@ -32,6 +32,7 @@ Generator {
   },
   "_options": Object {
     "design": Array [],
+    "generator": Array [],
     "map": Array [
       "a",
       "b",
@@ -75,6 +76,7 @@ Generator {
       "aa",
       "bb",
     ],
+    "generator": Array [],
     "map": Array [],
   },
 }
@@ -115,6 +117,7 @@ Generator {
       "aa",
       "bb",
     ],
+    "generator": Array [],
     "map": Array [
       "a",
       "b",
@@ -159,6 +162,7 @@ Generator {
       "aa",
       "bb",
     ],
+    "generator": Array [],
     "map": Array [
       "a",
       "b",

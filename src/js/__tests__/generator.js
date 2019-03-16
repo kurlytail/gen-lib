@@ -14,23 +14,27 @@ jest.mock('../logger');
 const FIXTURES = {
     NO_OPTIONS: {
         map: [],
-        design: []
+        design: [],
+        generator: []
     },
 
     MAP_ONLY_OPTIONS: {
         map: ['a', 'b'],
-        design: []
+        design: [],
+        generator: []
     },
 
     DESIGN_ONLY_OPTIONS: {
         map: [],
-        design: ['aa', 'bb']
+        design: ['aa', 'bb'],
+        generator: []
     },
 
     ALL_OPTIONS: {
         map: ['a', 'b'],
         design: ['aa', 'bb'],
-        output: 'output'
+        output: 'output',
+        generator: []
     },
 
     MAP: {
