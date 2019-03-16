@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
 
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const chalk = require('chalk');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const nodeExternals = require('webpack-node-externals');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const chmod = require('chmod');
+const pkg = require('./package.json');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDebug = process.env.NODE_ENV === 'debug';
@@ -38,7 +37,8 @@ const config = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(isProd ? 'production' : 'development')
-            }
+            },
+            'app.version': JSON.stringify(pkg.version)
         })
     ],
 

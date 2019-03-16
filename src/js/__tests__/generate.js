@@ -20,33 +20,6 @@ const FIXTURES = {
 };
 
 describe('# generate', () => {
-    describe('## getOverwriteOption', () => {
-        it('### should return non truthy when no overwrite options', () => {
-            let overwrite = getOverwriteOption({}, {});
-            expect(overwrite).not.toBeTruthy();
-        });
-
-        it('### should return skip when option is skip', () => {
-            let overwrite = getOverwriteOption({ overwrite: 'skip' }, {});
-            expect(overwrite).toBe('skip');
-        });
-
-        it('### should return skip when template option is skip', () => {
-            let overwrite = getOverwriteOption({}, { overwrite: 'skip' });
-            expect(overwrite).toBe('skip');
-        });
-
-        it('### should template option should override program option', () => {
-            let overwrite = getOverwriteOption({ overwrite: 'regen' }, { overwrite: 'skip' });
-            expect(overwrite).toBe('skip');
-        });
-
-        it('### should program option should override template option when forced', () => {
-            let overwrite = getOverwriteOption({ overwrite: 'regen', forceOverwrite: true }, { overwrite: 'skip' });
-            expect(overwrite).toBe('regen');
-        });
-    });
-
     describe('## manageFileNames', () => {
         beforeEach(() => {
             mkdirp.mockReset();

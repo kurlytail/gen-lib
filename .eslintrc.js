@@ -60,5 +60,8 @@ module.exports = {
         flowtype: {
             onlyFilesWithFlowAnnotation: true
         }
+    },
+    "globals": {
+        app: "readonly"
     }
 };

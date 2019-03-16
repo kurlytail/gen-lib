@@ -74,7 +74,12 @@
         ],
         "setupFiles": [
             "jest-localstorage-mock"
-        ]
+        ],
+        "globals": {
+            "app": {
+                "version" : "test"
+            }
+        }
     },
     "dependencies": {
         "child_process": "^1.0.2",

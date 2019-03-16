@@ -23,82 +23,6 @@ info: sgen is done
 "
 `;
 
-exports[`# integration test ## should generate design while deleting older generated files 1`] = `
-"info: loading map src/test/fixture/map.json
-info: Initializing git repository testoutput/.git
-info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
-info: Generated testoutput/cella from template src/test/fixture/master._
-info: Generated testoutput/cellb from template src/test/fixture/master._
-info: Generated testoutput/cella.js from template src/test/fixture/master.js._
-info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
-info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
-info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
-info: Generated testoutput/cella.java from template src/test/fixture/master.java._
-info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
-info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
-info: Committed generated files
-info: Attempting to use branch master-sgen-generated
-info: Creating new branch master-sgen-generated
-warn: Checkout branch master
-warn: Checkout branch master
-info: sgen is done
-"
-`;
-
-exports[`# integration test ## should generate design while deleting older generated files 2`] = `
-"cella
-cella.java
-cella.js
-cella.xml
-cellb
-cellb.java
-cellb.js
-cellb.xml
-toplevel
-"
-`;
-
-exports[`# integration test ## should generate design while deleting older generated files 3`] = `
-"info: loading map src/test/fixture/map.json
-info: Opening git repository testoutput/.git
-warn: Ignoring error Error: cannot stash changes - there is nothing to stash.
-info: Attempting to use branch master-sgen-generated
-warn: Checkout branch master-sgen-generated
-info: loading extension src/test/fixture/ext._
-info: loading extension src/test/fixture/toplevel._
-info: Generated testoutput/cella from template src/test/fixture/master._
-info: Generated testoutput/cellb from template src/test/fixture/master._
-info: Generated testoutput/cella.js from template src/test/fixture/master.js._
-info: Generated testoutput/cellb.js from template src/test/fixture/master.js._
-info: Generated testoutput/cella.xml from template src/test/fixture/master.xml._
-info: Generated testoutput/cellb.xml from template src/test/fixture/master.xml._
-info: Generated testoutput/cella.java from template src/test/fixture/master.java._
-info: Generated testoutput/cellb.java from template src/test/fixture/master.java._
-info: Generated testoutput/toplevel from template src/test/fixture/toplevel._
-warn: Checkout branch master-sgen-generated
-info: Committed generated files
-warn: Checkout branch master
-warn: Generator branch master-sgen-generated was modified
-
-
-info: sgen is done
-"
-`;
-
-exports[`# integration test ## should generate design while deleting older generated files 4`] = `
-"cella
-cella.java
-cella.js
-cella.xml
-cellb
-cellb.java
-cellb.js
-cellb.xml
-toplevel
-"
-`;
-
 exports[`# integration test ## should generate design with merge 1`] = `
 "info: loading map src/test/fixture/map.json
 info: Initializing git repository testoutput/.git
@@ -176,15 +100,14 @@ info: sgen is done
 
 exports[`# integration test ## should print help options 1`] = `
 "Usage:
-  node sgen.js [OPTION]
+  node sgen.min.js [OPTION]
 
 Options:
   -m, --map=ARG+       mapping files
   -d, --design=ARG+    design files
   -e, --extension=ARG+ extension directories or files
   -o, --output=ARG     output directory for generated files
-      --overwrite=ARG  Overwrite modes, can be one of skip, regen, error                                  (default: error)
-      --forceOverwrite Override overwrite flags in the generator map with the one provided on --overwrite
+  -g, --generator=ARG  generators to be used
   -h, --help           display this help
 "
 `;
