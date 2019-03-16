@@ -1,9 +1,10 @@
-import PATH from 'path';
 import FS from 'fs';
-import mkdirp from 'mkdirp';
-import logger from './logger';
-import _ from 'underscore';
 import lodash from 'lodash';
+import mkdirp from 'mkdirp';
+import PATH from 'path';
+import _ from 'underscore';
+
+import logger from './logger';
 
 function manageFileNames(options, fileName) {
     const outputDirectory = options.output ? options.output : './';

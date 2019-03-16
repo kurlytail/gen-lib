@@ -52,18 +52,18 @@ class Generator {
                 PATH.resolve(mapFile)
             )}`
         );
-        let mapFileText = FS.readFileSync(mapFile).toString();
-        let newMap = JSON.parse(
-            _.template(mapFileText)({
-                design: this.design,
-                options: this.options,
-                map,
-                extension: (matcher, labels) =>
-                    this.extensionBuilder.getExtensions(matcher, labels, {}),
-                lodash,
-                labels: []
-            })
-        );
+        const mapFileText = FS.readFileSync(mapFile).toString();
+        const template = _.template(mapFileText);
+        const mapContents = template({
+            design: this.design,
+            options: this.options,
+            map,
+            extension: (matcher, labels) =>
+                this.extensionBuilder.getExtensions(matcher, labels, {}),
+            lodash,
+            labels: []
+        });
+        let newMap = JSON.parse(mapContents);
 
         // Fixup all file names to global names
         newMap = Object.entries(newMap).reduce(

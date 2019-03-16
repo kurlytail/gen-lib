@@ -21,7 +21,7 @@ Extension {
     "map": "c",
     "options": "d",
   },
-  "_template": "test template",
+  "_template": [Function],
 }
 `;
 

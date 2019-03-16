@@ -136,40 +136,4 @@ describe('# Generator', () => {
             expect(generator).toMatchSnapshot();
         });
     });
-
-    /*    describe('## _initializeRepository', () => {
-        afterEach(() => {
-            Options.mockReset();
-            FS.existsSync.mockReset();
-            NodeGit.Repository.init.mockReset();
-            NodeGit.Repository.open.mockReset();
-            NodeGit.Branch.lookup.mockReset();
-            NodeGit.Branch.create.mockReset();
-        });
-
-        it('### should call git init if repo does not exist', async () => {
-            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
-            FS.existsSync.mockReturnValue(false);
-
-            let generator = new Generator();
-            await generator._initializeRepository();
-
-            expect(NodeGit.Repository.init).toHaveBeenCalled();
-            expect(NodeGit.Branch.lookup).toHaveBeenCalled();
-            expect(NodeGit.Branch.create).toHaveBeenCalled();
-        });
-
-        it('### should call git open if repo exists', async () => {
-            Options.mockImplementation(() => FIXTURES.ALL_OPTIONS);
-            FS.existsSync.mockReturnValue(true);
-
-            let generator = new Generator();
-            await generator._initializeRepository();
-
-            expect(NodeGit.Repository.open).toHaveBeenCalled();
-            expect(NodeGit.Branch.lookup).toHaveBeenCalled();
-            expect(NodeGit.Branch.create).toHaveBeenCalled();
-        });
-    });
-*/
 });

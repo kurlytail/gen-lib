@@ -1,15 +1,15 @@
 // @flow
 
 import FS from 'fs';
-import _ from 'underscore';
 import lodash from 'lodash';
+import _ from 'underscore';
 
 class Extension {
-
     _file: string;
     // eslint-disable-next-line flowtype/no-weak-types
     _generator: Object;
-    _template: string;
+    // eslint-disable-next-line flowtype/no-weak-types
+    _template: any;
 
     // eslint-disable-next-line flowtype/no-weak-types
     constructor(file: string, generator: Object) {
@@ -18,7 +18,7 @@ class Extension {
     }
 
     load(): Extension {
-        this._template = FS.readFileSync(this.file).toString();
+        this._template = _.template(FS.readFileSync(this.file).toString());
         return this;
     }
 
@@ -35,13 +35,20 @@ class Extension {
         const oldLabels = this.generator.labels;
         this.generator.labels = [...oldLabels, ...labels];
 
-        const generatedText = _.template(this.template)({
+        const generatedText = this._template({
             design: this.generator.design,
             options: this.generator.options,
             map: this.generator.map,
             context: templateDescription.context,
-            extension: (matcher: string, labels: Array<string>): Array<string> =>
-                this.generator.extensionBuilder.getExtensions(matcher, labels, templateDescription),
+            extension: (
+                matcher: string,
+                labels: Array<string>
+            ): Array<string> =>
+                this.generator.extensionBuilder.getExtensions(
+                    matcher,
+                    labels,
+                    templateDescription
+                ),
             lodash,
             labels: this.generator.labels
         });
