@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`# options ## constructor ### should merge options 1`] = `
+Options {
+  "design": Array [
+    "da",
+    "db",
+  ],
+  "extension": Array [
+    "ea",
+    "eb",
+  ],
+  "generator": Array [
+    "ga",
+    "gb",
+  ],
+  "map": Array [
+    "ma",
+    "mb",
+  ],
+  "someOption": Object {},
+}
+`;
+
+exports[`# options ## constructor ### should merge options 2`] = `
+Options {
+  "design": Array [
+    "da",
+    "db",
+    "dc",
+    "dd",
+  ],
+  "extension": Array [
+    "ea",
+    "eb",
+    "ec",
+    "ed",
+  ],
+  "generator": Array [
+    "ga",
+    "gb",
+    "gc",
+    "gd",
+  ],
+  "map": Array [
+    "ma",
+    "mb",
+    "mc",
+    "md",
+  ],
+  "someOption": Object {},
+}
+`;
+
 exports[`# options ## constructor ### should parse all options 1`] = `
 Options {
   "design": Array [],

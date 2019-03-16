@@ -2,17 +2,22 @@
 
 import Getopt from 'node-getopt';
 
+type OptionType = {
+    design: Array<string>,
+    map: Array<string>,
+    extension: Array<string>,
+    generator: Array<string>
+};
+
 class Options {
     design: Array<string>;
     map: Array<string>;
     extension: Array<string>;
     generator: Array<string>;
     output: string;
-    overwrite: string;
-    forceOverwrite: string;
 
     // eslint-disable-next-line flowtype/no-weak-types
-    constructor(processArgs: Array<string>, overrideOptions: Object) {
+    constructor(processArgs: Array<string>, overrideOptions: OptionType) {
         const getopt = new Getopt([
             ['m', 'map=ARG+', 'mapping files'],
             ['d', 'design=ARG+', 'design files'],
@@ -34,6 +39,13 @@ class Options {
             getopt.parse(processArgs).options,
             overrideOptions
         );
+    }
+
+    merge(options: OptionType) {
+        this.design = [...this.design, ...options.design];
+        this.map = [...this.map, ...options.map];
+        this.extension = [...this.extension, ...options.extension];
+        this.generator = [...this.generator, ...options.generator];
     }
 }
 
