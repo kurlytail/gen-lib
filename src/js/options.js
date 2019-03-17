@@ -37,6 +37,11 @@ class Options {
     }
 
     merge(options: OptionType) {
+        options.design = options.design || [];
+        options.map = options.map || [];
+        options.extension = options.extension || [];
+        options.generator = options.generator || [];
+
         this.design = [...this.design, ...options.design];
         this.map = [...this.map, ...options.map];
         this.extension = [...this.extension, ...options.extension];

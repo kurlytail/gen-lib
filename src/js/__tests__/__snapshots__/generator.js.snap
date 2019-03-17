@@ -38,6 +38,7 @@ Generator {
       "b",
     ],
   },
+  "_packages": Object {},
 }
 `;
 
@@ -79,6 +80,7 @@ Generator {
     "generator": Array [],
     "map": Array [],
   },
+  "_packages": Object {},
 }
 `;
 
@@ -124,6 +126,7 @@ Generator {
     ],
     "output": "output",
   },
+  "_packages": Object {},
 }
 `;
 
@@ -169,6 +172,7 @@ Generator {
     ],
     "output": "output",
   },
+  "_packages": Object {},
 }
 `;
 
