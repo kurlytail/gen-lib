@@ -34,10 +34,7 @@ class Generator {
         this._design = getDesign(rawDesign);
     }
 
-    _loadGeneratorPackages() {
-
-        this._packages = {};
-
+    _loadGeneratorPackage(pack) {
         // eslint-disable-next-line no-undef
         const requireFunc =
             typeof __webpack_require__ === 'function'
@@ -45,38 +42,39 @@ class Generator {
                 // eslint-disable-next-line no-undef
                 __non_webpack_require__
                 : require;
-        do {
-            // Dont use sets because this loop needs to be order preserving
-            this.options.generator.forEach(pack => {
-                if (Object.keys(this._packages).includes(pack)) return;
 
-                let packageName = `@kurlytail/gen-${pack}`;
-                let options;
+        if (Object.keys(this._packages).includes(pack)) return;
 
-                try {
-                    options = requireFunc(packageName);
-                } catch (err) {
-                    packageName = `gen-${pack}`;
-                    try {
-                        options = requireFunc(packageName);
-                    }
-                    catch (err) {
-                        packageName = pack;
-                        options = requireFunc(packageName);
-                    }
-                }
+        let packageName = `@kurlytail/gen-${pack}`;
+        let options;
 
-                logger.info(
-                    `Loaded generator ${packageName}@${options.default.version}`
-                );
+        try {
+            options = requireFunc(packageName);
+        } catch (err) {
+            packageName = `gen-${pack}`;
+            try {
+                options = requireFunc(packageName);
+            } catch (err) {
+                packageName = pack;
+                options = requireFunc(packageName);
+            }
+        }
+        this._packages[pack] = { ...options.default, packageName };
+        const generators = options.generator || [];
+        generators.forEach(depPack => this._loadGeneratorPackage(depPack));
 
-                this._packages[pack] = { ...options.default, packageName };
-                this.options.merge(options.default);
+        // Merge options after dependent package options are merged are loaded
+        this.options.merge(options.default);
+        logger.info(
+            `Loaded generator ${packageName}@${options.default.version}`
+        );
+    }
 
-            });
-        } while (
-            _.difference(this.options.generator, Object.keys(this._packages))
-                .length !== 0
+    _loadGeneratorPackages() {
+        this._packages = {};
+
+        this.options.generator.forEach(pack =>
+            this._loadGeneratorPackage(pack)
         );
     }
 
