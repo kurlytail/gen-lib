@@ -60,7 +60,7 @@ class Generator {
             }
         }
         this._packages[pack] = { ...options.default, packageName };
-        const generators = options.generator || [];
+        const generators = options.default.generator || [];
         generators.forEach(depPack => this._loadGeneratorPackage(depPack));
 
         // Merge options after dependent package options are merged are loaded
@@ -73,7 +73,10 @@ class Generator {
     _loadGeneratorPackages() {
         this._packages = {};
 
-        this.options.generator.forEach(pack =>
+        const generator = this.options.generator;
+        this.options.generator = [];
+
+        generator.forEach(pack =>
             this._loadGeneratorPackage(pack)
         );
     }

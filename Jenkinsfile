@@ -2,7 +2,7 @@ pipeline {
     agent none
 
     parameters {
-        string(defaultValue: "1.0", description: 'Build version prefix', name: 'BUILD_VERSION_PREFIX')
+        string(defaultValue: "1.1", description: 'Build version prefix', name: 'BUILD_VERSION_PREFIX')
         string(defaultValue: "", description: 'Build number offset', name: 'BUILDS_OFFSET')
     }
 
