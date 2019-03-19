@@ -38,8 +38,9 @@ class Generator {
         // eslint-disable-next-line no-undef
         const requireFunc =
             typeof __webpack_require__ === 'function'
-                ? // eslint-disable-next-line no-undef
-                  __non_webpack_require__
+                ?
+                // eslint-disable-next-line no-undef
+                __non_webpack_require__
                 : require;
 
         if (Object.keys(this._packages).includes(pack)) return;
