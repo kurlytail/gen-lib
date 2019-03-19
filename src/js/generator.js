@@ -38,9 +38,8 @@ class Generator {
         // eslint-disable-next-line no-undef
         const requireFunc =
             typeof __webpack_require__ === 'function'
-                ?
-                // eslint-disable-next-line no-undef
-                __non_webpack_require__
+                ? // eslint-disable-next-line no-undef
+                  __non_webpack_require__
                 : require;
 
         if (Object.keys(this._packages).includes(pack)) return;
@@ -76,9 +75,12 @@ class Generator {
         const generator = this.options.generator;
         this.options.generator = [];
 
-        generator.forEach(pack =>
-            this._loadGeneratorPackage(pack)
-        );
+        generator.forEach(pack => {
+            this._loadGeneratorPackage(pack);
+            if (!this.options.generator.includes(pack)) {
+                this.options.generator.push(pack);
+            }
+        });
     }
 
     _normalizeMapEntry(mapFile, map, [fileName, templateDescription]) {
