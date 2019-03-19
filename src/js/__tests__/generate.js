@@ -1,7 +1,7 @@
 import FS from 'fs';
 import mkdirp from 'mkdirp';
 
-import { getOverwriteOption, manageFileNames, generateFileData } from '../generate';
+import { manageFileNames, generateFileData } from '../generate';
 
 jest.mock('fs');
 jest.mock('mkdirp');
