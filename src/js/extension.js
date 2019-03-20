@@ -23,7 +23,7 @@ class Extension {
     }
 
     // eslint-disable-next-line flowtype/no-weak-types
-    generate(labels: any, templateDescription: Object): string {
+    generate(labels: any, templateDescription: Object, args: ?Object): string {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -42,15 +42,19 @@ class Extension {
             context: templateDescription.context,
             extension: (
                 matcher: string,
-                labels: Array<string>
+                labels: Array<string>,
+                // eslint-disable-next-line flowtype/no-weak-types
+                args: ?Object
             ): Array<string> =>
                 this.generator.extensionBuilder.getExtensions(
                     matcher,
                     labels,
-                    templateDescription
+                    templateDescription,
+                    args
                 ),
             lodash,
-            labels: this.generator.labels
+            labels: this.generator.labels,
+            args
         });
 
         this.generator.labels = oldLabels;

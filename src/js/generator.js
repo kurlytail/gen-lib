@@ -108,8 +108,8 @@ class Generator {
             design: this.design,
             options: this.options,
             map,
-            extension: (matcher, labels) =>
-                this.extensionBuilder.getExtensions(matcher, labels, {}),
+            extension: (matcher, labels, args) =>
+                this.extensionBuilder.getExtensions(matcher, labels, {}, args),
             lodash,
             labels: []
         });

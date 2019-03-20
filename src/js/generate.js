@@ -25,11 +25,12 @@ function generateFileData(generator, templateDescription, fileName) {
         options: generator.options,
         context: templateDescription.context,
         map: generator.map,
-        extension: (matcher, labels) =>
+        extension: (matcher, labels, args) =>
             generator.extensionBuilder.getExtensions(
                 matcher,
                 labels,
-                templateDescription
+                templateDescription,
+                args
             ),
         lodash,
         fileName,

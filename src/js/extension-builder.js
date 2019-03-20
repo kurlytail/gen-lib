@@ -60,7 +60,7 @@ class ExtensionBuilder {
     }
 
     // eslint-disable-next-line flowtype/no-weak-types
-    getExtensions(match: string, labels: Array<string>, templateDescription: Object): Array<string> {
+    getExtensions(match: string, labels: Array<string>, templateDescription: Object, args: Object): Array<string> {
         return this.extensions
             // eslint-disable-next-line flowtype/no-weak-types
             .filter((ext: Object): boolean => ext.name.match(match))
@@ -70,7 +70,7 @@ class ExtensionBuilder {
                     logger.info(`loading extension ${PATH.relative(PATH.resolve('./'), PATH.resolve(ext.file))}`);
                     ext.extension = new Extension(ext.file, this.generator).load();
                 }
-                return ext.extension.generate(labels, templateDescription);
+                return ext.extension.generate(labels, templateDescription, args);
             });
     }
 
