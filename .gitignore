@@ -6,3 +6,4 @@ coverage/
 .vscode/
 testcode
 testoutput
+package-lock.json

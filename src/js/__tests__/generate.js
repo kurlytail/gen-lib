@@ -27,17 +27,17 @@ describe('# generate', () => {
         it('### should return filenames for filename with no options', () => {
             let fileNames = manageFileNames({}, 'test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp.sync).toBeCalled();
+            expect(mkdirp.sync).toHaveBeenCalled();
         });
         it('### should return filenames for filename with output options', () => {
             let fileNames = manageFileNames(FIXTURES.OPTION_OUTPUT, 'test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp.sync).toBeCalled();
+            expect(mkdirp.sync).toHaveBeenCalled();
         });
         it('### should return filenames for absolute filename with output options', () => {
             let fileNames = manageFileNames(FIXTURES.OPTION_OUTPUT, '/test');
             expect(fileNames).toMatchSnapshot();
-            expect(mkdirp.sync).toBeCalled();
+            expect(mkdirp.sync).toHaveBeenCalled();
         });
     });
 
