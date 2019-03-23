@@ -6,6 +6,10 @@ pipeline {
         string(defaultValue: "", description: 'Build number offset', name: 'BUILDS_OFFSET')
     }
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '4'))
+    }
+
     stages {
         stage('Prepare env') {
             agent {
