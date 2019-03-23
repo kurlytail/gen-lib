@@ -52,13 +52,13 @@ pipeline {
                     sh 'npm run build'
                     sh 'npm publish'
                     sh 'mkdir __npm_versions'
-                    sh 'npm outdated > __npm_versions/index.html || true'
+                    sh 'npm outdated --json > __npm_versions/index.txt || true'
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
                         reportDir: '__npm_versions',
-                        reportFiles: 'index.html',
+                        reportFiles: 'index.txt',
                         reportName: 'NPM versions'
                     ]
                 }
