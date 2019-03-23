@@ -51,6 +51,16 @@ pipeline {
                     junit 'test-report.xml'
                     sh 'npm run build'
                     sh 'npm publish'
+                    sh 'mkdir __npm_versions'
+                    sh 'npm outdated > __npm_versions/index.html'
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: '__versions',
+                        reportFiles: 'index.html',
+                        reportName: 'NPM versions'
+                    ]
                 }
             }
         }
