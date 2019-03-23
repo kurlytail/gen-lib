@@ -52,7 +52,7 @@ pipeline {
                     sh 'npm run build'
                     sh 'npm publish'
                     sh 'mkdir __npm_versions'
-                    sh 'npm outdated > __npm_versions/index.html'
+                    sh 'npm outdated > __npm_versions/index.html || true'
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
