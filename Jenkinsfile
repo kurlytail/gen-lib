@@ -57,7 +57,7 @@ pipeline {
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: '__versions',
+                        reportDir: '__npm_versions',
                         reportFiles: 'index.html',
                         reportName: 'NPM versions'
                     ]
