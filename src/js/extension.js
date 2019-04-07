@@ -23,7 +23,7 @@ class Extension {
     }
 
     // eslint-disable-next-line flowtype/no-weak-types
-    generate(labels: any, templateDescription: Object, args: ?Object): string {
+    generate(labels: any, templateDescription: Object, genArgs: ?Object): string {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -54,7 +54,7 @@ class Extension {
                 ),
             lodash,
             labels: this.generator.labels,
-            args
+            genArgs
         });
 
         this.generator.labels = oldLabels;
