@@ -54,7 +54,7 @@ class Extension {
                 ),
             lodash,
             labels: this.generator.labels,
-            genArgs
+            args: genArgs
         });
 
         this.generator.labels = oldLabels;
