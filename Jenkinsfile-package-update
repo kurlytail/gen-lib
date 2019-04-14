@@ -29,7 +29,8 @@ pipeline {
                 checkout scm
 
                 nodejs(nodeJSInstallationName: 'Node') {
-                    sh 'ncu -a'
+                    sh 'npm install --no-save ncu'
+                    sh './node_modules/bin/ncu -a'
                     sh 'npm install --no-save'
                     sh 'npm run lint'
                     sh 'npm run test'
