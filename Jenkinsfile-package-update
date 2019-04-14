@@ -1,0 +1,57 @@
+pipeline {
+    agent none
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '4'))
+    }
+
+    stages {
+        stage('Prepare env') {
+            agent {
+                label 'master'
+            }
+
+            steps {
+                script {
+                    loadLibrary()
+                }
+            }
+        }
+
+        stage ('NPM Build') {
+            agent {
+                label 'node-build'
+            }
+
+            steps {
+                sh 'rm -rf *'
+
+                checkout scm
+
+                nodejs(nodeJSInstallationName: 'Node') {
+                    sh 'ncu -a'
+                    sh 'npm install --no-save'
+                    sh 'npm run lint'
+                    sh 'npm run test'
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'coverage',
+                        reportFiles: 'index.html',
+                        reportName: 'Coverage Report'
+                    ]
+                    junit 'test-report.xml'
+                    sh 'npm run build'
+                }
+            }
+        }
+    }
+
+
+    post {
+        always {
+            slackSend message: "gen-lib packages-updated Status ${currentBuild.result} - ${env.BUILD_URL}"
+        }
+    }
+}
