@@ -50,7 +50,11 @@ pipeline {
                     ]
                     junit 'test-report.xml'
                     sh 'npm run build'
-                    sh 'npm publish'
+                    script {
+                        if (env['BUILDING_QA_CANDIDATE'] != 'false') {
+                            sh 'npm publish'
+                        }
+                    }
                     sh 'mkdir __npm_versions'
                     sh 'npm outdated --json > __npm_versions/index.txt || true'
                     publishHTML target: [
