@@ -30,7 +30,7 @@ pipeline {
 
                 nodejs(nodeJSInstallationName: 'Node') {
                     sh 'npm install --no-save ncu'
-                    sh './node_modules/bin/ncu -a'
+                    sh './node_modules/.bin/ncu -a'
                     sh 'npm install --no-save'
                     sh 'npm run lint'
                     sh 'npm run test'
