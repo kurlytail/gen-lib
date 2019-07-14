@@ -22,6 +22,6 @@ steps:
 
 - script: |
     npm run lint
-    npm run tesat
+    npm run test
   displayName: 'npm lint and test'
 
