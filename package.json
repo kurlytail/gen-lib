@@ -96,7 +96,7 @@
         "nodegit": "^0.24.1",
         "path": "^0.12.7",
         "prettier": "^1.16.4",
-        "prettier-plugin-java": "0.0.10",
+        "prettier-plugin-java": "0.3.1",
         "underscore": "^1.9.1",
         "winston": "^3.2.1"
     },
