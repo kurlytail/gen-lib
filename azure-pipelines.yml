@@ -25,3 +25,8 @@ steps:
     npm run test
   displayName: 'npm lint and test'
 
+- task: PublishTestResults@1
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: 'test-report.xml'
