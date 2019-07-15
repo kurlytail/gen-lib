@@ -40,7 +40,7 @@
         "rimraf": "2.6.3",
         "source-map-loader": "0.2.4",
         "source-map-support": "0.5.12",
-        "stringifier": "2.0.0",
+        "stringifier": "2.1.0",
         "uglifyjs-webpack-plugin": "2.1.2",
         "uuid": "3.3.2",
         "webpack": "4.30.0",
