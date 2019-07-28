@@ -15,18 +15,46 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    customRegistry: 'useFeed'
+    customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
 
-- script: |
-    npm run lint
-    npm run test
-  displayName: 'npm lint and test'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'build'
+    customRegistry: 'useFeed'
+    customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'lint'
+    customRegistry: 'useFeed'
+    customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'test'
+    customRegistry: 'useFeed'
+    customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
 
 - task: PublishTestResults@1
   condition: succeededOrFailed()
   inputs:
     testRunner: JUnit
     testResultsFiles: 'test-report.xml'
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishEndpoint: 'kurlytail-npm'
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
