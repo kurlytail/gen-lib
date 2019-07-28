@@ -9,8 +9,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-
-
 steps:
 - task: NodeTool@0
   inputs:
@@ -43,6 +41,6 @@ steps:
   condition: succeeded()
   inputs:
     script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git'
-    env:
-      GithubPAT: $(GithubPAT)
+  env:
+    GithubPAT: $(GithubPAT)
 
