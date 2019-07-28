@@ -15,6 +15,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: npmAuthenticate@0
+  inputs:
+    workingFile: '.npmrc'
+    customEndpoint: 'kurlytail-npm'
+
 - task: Npm@1
   inputs:
     command: 'install'
@@ -54,6 +59,11 @@ steps:
     customCommand: '--no-git-tag-version version patch'
     customRegistry: 'useFeed'
     customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishEndpoint: 'kurlytail-npm'
 
 - task: Npm@1
   inputs:
