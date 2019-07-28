@@ -24,21 +24,21 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'build'
+    customCommand: 'run build'
     customRegistry: 'useFeed'
     customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'lint'
+    customCommand: 'run lint'
     customRegistry: 'useFeed'
     customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'test'
+    customCommand: 'run test'
     customRegistry: 'useFeed'
     customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
 
