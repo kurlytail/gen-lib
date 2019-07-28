@@ -50,6 +50,18 @@ steps:
 
 - task: Npm@1
   inputs:
+    command: 'custom'
+    customCommand: '--no-git-tag-version version patch'
+    customRegistry: 'useFeed'
+    customFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
+
+- task: Npm@1
+  inputs:
     command: 'publish'
     publishRegistry: 'useFeed'
     publishFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
+
+- task: CmdLine@2
+  inputs:
+    script: 'git push'
+
