@@ -42,5 +42,5 @@ steps:
   inputs:
     script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git HEAD:master'
   env:
-    GithubPAT: $(GithubPAT)
+    GithubPAT: $(BST.GithubPAT)
 
