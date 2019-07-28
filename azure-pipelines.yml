@@ -39,11 +39,13 @@ steps:
     script: |
       git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}
       env
+  displayName: 'Pushing version into git'
 
   env:
     GITHUB_TOKEN: $(GITHUB_TOKEN)
 
 - task: CmdLine@2
+  condition: succeeded()
   inputs:
     script: |
       npm publish
