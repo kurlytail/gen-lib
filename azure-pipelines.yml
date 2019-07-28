@@ -37,11 +37,10 @@ steps:
   condition: succeeded()
   inputs:
     script: |
-      git diff
+      git config --global user.email "ashwinkn@hotmail.com"
+      git config --global user.name "Ashwin Kamath"
       git add package.json
       git commit -m 'Updated version'
-      git branch -v
-      git remote -v
       git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}
       env
   displayName: 'Pushing version into git'
