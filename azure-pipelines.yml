@@ -13,44 +13,42 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-#- task: NodeTool@0
-#  inputs:
-#    versionSpec: '10.x'
-#  displayName: 'Install Node.js'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-#- task: npmAuthenticate@0
-#  inputs:
-#    workingFile: '.npmrc'
-#    customEndpoint: 'kurlytail-npm'
+- task: npmAuthenticate@0
+  inputs:
+    workingFile: '.npmrc'
+    customEndpoint: 'kurlytail-npm'
+
 
 - task: CmdLine@2
   inputs:
     script: |
-      echo ${GITHUB_TOKEN}
-      echo ${GITHUB_TOKEN} | base64
+      npm install
+      npm --no-git-tag-version version patch
+      npm run build
+      npm run lint
+      npm run test
+  displayName: 'Building package'
+
+- task: CmdLine@2
+  condition: succeeded()
+  inputs:
+    script: 'git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}'
   env:
     GITHUB_TOKEN: $(GITHUB_TOKEN)
 
-#- task: CmdLine@2
-#  inputs:
-#    script: |
-#      cat .npmrc
-#      npm install
-#      npm run build
-#      npm run lint
-#      npm run test
-#      npm --no-git-tag-version version patch
-#      npm publish
+- task: CmdLine@2
+  inputs:
+    script: |
+      npm publish
+  displayName: 'Publishing package'
 
-#- task: PublishTestResults@1
-#  condition: succeededOrFailed()
-#  inputs:
-#    testRunner: JUnit
-#    testResultsFiles: 'test-report.xml'
-
-#- task: CmdLine@2
-#  condition: succeeded()
-#  inputs:
-#    script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git HEAD:master'
-
-
+- task: PublishTestResults@1
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: 'test-report.xml'
