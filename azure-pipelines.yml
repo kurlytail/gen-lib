@@ -6,6 +6,9 @@
 trigger:
 - master
 
+variables:
+- group: BST
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -41,6 +44,5 @@ steps:
   condition: succeeded()
   inputs:
     script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git HEAD:master'
-  env:
-    GithubPAT: $(BST.GithubPAT)
+
 
