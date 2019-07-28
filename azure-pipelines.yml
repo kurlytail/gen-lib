@@ -37,6 +37,9 @@ steps:
   condition: succeeded()
   inputs:
     script: |
+      git diff
+      git add package.json
+      git commit -m 'Updated version'
       git branch -v
       git remote -v
       git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}
