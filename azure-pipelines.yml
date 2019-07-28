@@ -23,7 +23,6 @@ steps:
     workingFile: '.npmrc'
     customEndpoint: 'kurlytail-npm'
 
-
 - task: CmdLine@2
   inputs:
     script: |
@@ -37,7 +36,10 @@ steps:
 - task: CmdLine@2
   condition: succeeded()
   inputs:
-    script: 'git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}'
+    script: |
+      env
+      git push https://${GITHUB_TOKEN}@github.com/kurlytail/gen-lib.git HEAD:${BUILD_SOURCEBRANCH}
+
   env:
     GITHUB_TOKEN: $(GITHUB_TOKEN)
 
