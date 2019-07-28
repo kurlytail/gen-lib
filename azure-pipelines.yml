@@ -51,10 +51,5 @@ steps:
 - task: Npm@1
   inputs:
     command: 'publish'
-    publishEndpoint: 'kurlytail-npm'
-
-- task: Npm@1
-  inputs:
-    command: 'publish'
     publishRegistry: 'useFeed'
     publishFeed: '232c7e38-5ce3-4589-a8f2-effba452f14f'
