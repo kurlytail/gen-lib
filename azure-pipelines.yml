@@ -40,7 +40,7 @@ steps:
 - task: CmdLine@2
   condition: succeeded()
   inputs:
-    script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git'
+    script: 'git push https://${GithubPAT}@github.com/kurlytail/gen-lib.git HEAD:master'
   env:
-    GithubPAT: GithubPAT
+    GithubPAT: $(GithubPAT)
 
