@@ -37,7 +37,7 @@
         "jest-localstorage-mock": "2.4.0",
         "jsdoc": "3.6.3",
         "rewire": "4.0.1",
-        "rimraf": "2.6.3",
+        "rimraf": "2.7.0",
         "source-map-loader": "0.2.4",
         "source-map-support": "0.5.13",
         "stringifier": "2.1.0",
