@@ -1,6 +1,6 @@
 module.exports = {
     extends: ['eslint:recommended', 'plugin:jest/recommended', 'prettier'],
-    plugins: ['babel', 'jest', 'flowtype'],
+    plugins: ['babel', 'flowtype'],
     parser: 'babel-eslint',
     env: {
         browser: true,

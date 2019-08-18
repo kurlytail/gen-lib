@@ -5,6 +5,7 @@ import NodeGit from 'nodegit';
 import PATH from 'path';
 import _ from 'underscore';
 import uuidv4 from 'uuid/v4';
+import YAML from 'yaml';
 
 import getDesign from './design';
 import ExtensionBuilder from './extension-builder';
@@ -14,7 +15,9 @@ import Options from './options';
 
 class Generator {
     _loadOneDesign(design, designFile) {
-        const augmentedDesign = JSON.parse(FS.readFileSync(designFile));
+        const augmentedDesign = designFile.endsWith('yml')
+            ? YAML.parse(FS.readFileSync(designFile))
+            : JSON.parse(FS.readFileSync(designFile));
         return { ...design, ...augmentedDesign };
     }
 
@@ -38,9 +41,8 @@ class Generator {
         // eslint-disable-next-line no-undef
         const requireFunc =
             typeof __webpack_require__ === 'function'
-                ?
-                // eslint-disable-next-line no-undef
-                __non_webpack_require__
+                ? // eslint-disable-next-line no-undef
+                  __non_webpack_require__
                 : require;
 
         if (Object.keys(this._packages).includes(pack)) return;
@@ -113,7 +115,9 @@ class Generator {
             lodash,
             labels: []
         });
-        let newMap = JSON.parse(mapContents);
+        let newMap = mapFile.endsWith('yml')
+            ? YAML.parse(mapContents)
+            : JSON.parse(mapContents);
 
         // Fixup all file names to global names
         newMap = Object.entries(newMap).reduce(
