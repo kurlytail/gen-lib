@@ -42,7 +42,7 @@
         "source-map-support": "0.5.13",
         "stringifier": "2.1.0",
         "uglifyjs-webpack-plugin": "2.2.0",
-        "uuid": "3.3.2",
+        "uuid": "3.3.3",
         "webpack": "4.39.2",
         "webpack-cli": "3.3.7",
         "webpack-node-externals": "1.7.2",
