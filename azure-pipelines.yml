@@ -13,7 +13,7 @@ variables:
 - group: BST
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'npm builds'
 
 steps:
 - task: NodeTool@0
