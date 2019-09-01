@@ -1,12 +1,16 @@
 // @flow
 
+import FS from 'fs';
+import YAML from 'yaml';
 import Getopt from 'node-getopt';
+import deepmerge from 'deepmerge';
 
 type OptionType = {
     design: Array<string>,
     map: Array<string>,
     extension: Array<string>,
-    generator: Array<string>
+    generator: Array<string>,
+    options: Array<string>
 };
 
 class Options {
@@ -14,6 +18,7 @@ class Options {
     map: Array<string>;
     extension: Array<string>;
     generator: Array<string>;
+    options: Array<string>;
     output: string;
 
     // eslint-disable-next-line flowtype/no-weak-types
@@ -23,17 +28,37 @@ class Options {
             ['d', 'design=ARG+', 'design files'],
             ['e', 'extension=ARG+', 'extension directories or files'],
             ['o', 'output=ARG', 'output directory for generated files'],
-            ['g', 'generator=ARG+', 'generators to be used']
+            ['g', 'generator=ARG+', 'generators to be used'],
+            ['p', 'options=ARG+', 'extra option json/yaml files']
         ]);
 
         getopt.bindHelp();
 
-        Object.assign(
-            this,
-            { design: [], map: [], extension: [], generator: [] },
-            getopt.parse(processArgs).options,
-            overrideOptions
+        const commandLineOptions = Object.assign(
+            {},
+            getopt.parse(processArgs).options
         );
+
+        Object.assign(this, {
+            design: [],
+            map: [],
+            extension: [],
+            generator: [],
+            options: []
+        });
+
+        let fileOptions =
+            (overrideOptions ? overrideOptions.options : []) ||
+            commandLineOptions.options ||
+            [];
+        fileOptions.forEach((optionFile: string) => {
+            let fileOptions = optionFile.endsWith('yml')
+                ? YAML.parse(FS.readFileSync(optionFile, 'utf8'))
+                : JSON.parse(FS.readFileSync(optionFile, 'utf8'));
+            Object.assign(this, deepmerge(this, fileOptions));
+        });
+
+        Object.assign(this, commandLineOptions, overrideOptions);
     }
 
     merge(options: OptionType) {

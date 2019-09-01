@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`# options ## constructor ### should merge json options 1`] = `
+Options {
+  "design": Array [
+    "da",
+    "db",
+    "dc",
+    "dd",
+  ],
+  "extension": Array [
+    "ea",
+    "eb",
+    "ec",
+    "ed",
+  ],
+  "generator": Array [
+    "ga",
+    "gb",
+    "gc",
+    "gd",
+  ],
+  "map": Array [
+    "ma",
+    "mb",
+    "mc",
+    "md",
+  ],
+  "options": Array [
+    "someoption.json",
+    "moreoption.json",
+  ],
+  "someOption": Object {},
+}
+`;
+
 exports[`# options ## constructor ### should merge options 1`] = `
 Options {
   "design": Array [
@@ -18,6 +52,7 @@ Options {
     "ma",
     "mb",
   ],
+  "options": Array [],
   "someOption": Object {},
 }
 `;
@@ -48,6 +83,32 @@ Options {
     "mc",
     "md",
   ],
+  "options": Array [],
+  "someOption": Object {},
+}
+`;
+
+exports[`# options ## constructor ### should merge yaml options 1`] = `
+Options {
+  "design": Array [
+    "da",
+    "db",
+  ],
+  "extension": Array [
+    "ea",
+    "eb",
+  ],
+  "generator": Array [
+    "ga",
+    "gb",
+  ],
+  "map": Array [
+    "ma",
+    "mb",
+  ],
+  "options": Array [
+    "someoption.yml",
+  ],
   "someOption": Object {},
 }
 `;
@@ -58,6 +119,7 @@ Options {
   "extension": Array [],
   "generator": Array [],
   "map": Array [],
+  "options": Array [],
   "someOption": Object {},
 }
 `;
