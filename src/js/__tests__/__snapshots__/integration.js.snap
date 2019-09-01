@@ -120,6 +120,7 @@ Options:
   -e, --extension=ARG+ extension directories or files
   -o, --output=ARG     output directory for generated files
   -g, --generator=ARG+ generators to be used
+  -p, --options=ARG+   extra option json/yaml files
   -h, --help           display this help
 "
 `;
