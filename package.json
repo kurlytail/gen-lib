@@ -46,8 +46,7 @@
         "webpack": "4.39.3",
         "webpack-cli": "3.3.7",
         "webpack-node-externals": "1.7.2",
-        "webpack-permissions-plugin": "1.0.6",
-        "yaml": "1.6.0"
+        "webpack-permissions-plugin": "1.0.6"
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
@@ -100,7 +99,8 @@
         "prettier": "1.18.2",
         "prettier-plugin-java": "0.3.1",
         "underscore": "1.9.1",
-        "winston": "3.2.1"
+        "winston": "3.2.1",
+        "yaml": "1.6.0"
     },
     "bin": {
         "sgen": "dist/sgen.min.js"
