@@ -34,6 +34,7 @@ class Options {
 
         getopt.bindHelp();
 
+        processArgs[0] == '--' && processArgs.shift();
         const commandLineOptions = Object.assign(
             {},
             getopt.parse(processArgs).options
@@ -48,9 +49,10 @@ class Options {
         });
 
         let fileOptions =
-            (overrideOptions ? overrideOptions.options : []) ||
-            commandLineOptions.options ||
-            [];
+            (overrideOptions
+                ? overrideOptions.options
+                : commandLineOptions.options) || [];
+
         fileOptions.forEach((optionFile: string) => {
             let fileOptions = optionFile.endsWith('yml')
                 ? YAML.parse(FS.readFileSync(optionFile, 'utf8'))
