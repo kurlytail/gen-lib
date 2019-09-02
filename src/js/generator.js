@@ -73,7 +73,11 @@ class Generator {
     }
 
     _loadGeneratorPackages() {
-        this._packages = {};
+        this._packages = {
+            packageName: '@kurlytail/gen-lib',
+            // eslint-disable-next-line no-undef
+            version: app.version
+        };
 
         const generator = this.options.generator;
         this.options.generator = [];
