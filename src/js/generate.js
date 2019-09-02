@@ -21,6 +21,7 @@ function generateFileData(generator, templateDescription, fileName) {
         FS.readFileSync(templateDescription.template).toString()
     );
     const newFileText = template({
+        packages: generator.packages,
         design: generator.design,
         options: generator.options,
         context: templateDescription.context,
@@ -57,9 +58,7 @@ function generate(generator) {
 
             FS.writeFileSync(fileName, newFileText);
             logger.info(
-                `Generated ${fileName} from template ${
-                    templateDescription.template
-                }`
+                `Generated ${fileName} from template ${templateDescription.template}`
             );
 
             generatedFiles.push(fileName);

@@ -357,9 +357,7 @@ class Generator {
                 `Generator branch ${this._generatorBranch.name} was modified`
             );
             logger.warn(
-                `Please cherrypick changes from ${
-                    this._generatorBranch.name
-                } from ${this._postCommit.commit}`
+                `Please cherrypick changes from ${this._generatorBranch.name} from ${this._postCommit.commit}`
             );
             logger.info(`git cherry-pick ${this._postCommit.commit}`);
         }
@@ -427,6 +425,10 @@ class Generator {
 
     set labels(labels) {
         this._labels = labels;
+    }
+
+    get packages() {
+        return this._packages || [];
     }
 
     async generate() {

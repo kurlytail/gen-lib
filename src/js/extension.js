@@ -23,7 +23,11 @@ class Extension {
     }
 
     // eslint-disable-next-line flowtype/no-weak-types
-    generate(labels: any, templateDescription: Object, genArgs: ?Object): string {
+    generate(
+        labels: any,
+        templateDescription: Object,
+        genArgs: ?Object
+    ): string {
         if (!Array.isArray(labels)) {
             if (!labels) {
                 labels = [];
@@ -36,6 +40,7 @@ class Extension {
         this.generator.labels = [...oldLabels, ...labels];
 
         const generatedText = this._template({
+            packages: this.generator.packages,
             design: this.generator.design,
             options: this.generator.options,
             map: this.generator.map,
