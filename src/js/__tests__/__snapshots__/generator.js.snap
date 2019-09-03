@@ -39,8 +39,10 @@ Generator {
     ],
   },
   "_packages": Object {
-    "packageName": "@kurlytail/gen-lib",
-    "version": "test",
+    "lib": Object {
+      "packageName": "@kurlytail/gen-lib",
+      "version": "test",
+    },
   },
 }
 `;
@@ -84,8 +86,10 @@ Generator {
     "map": Array [],
   },
   "_packages": Object {
-    "packageName": "@kurlytail/gen-lib",
-    "version": "test",
+    "lib": Object {
+      "packageName": "@kurlytail/gen-lib",
+      "version": "test",
+    },
   },
 }
 `;
@@ -133,8 +137,10 @@ Generator {
     "output": "output",
   },
   "_packages": Object {
-    "packageName": "@kurlytail/gen-lib",
-    "version": "test",
+    "lib": Object {
+      "packageName": "@kurlytail/gen-lib",
+      "version": "test",
+    },
   },
 }
 `;
@@ -182,8 +188,10 @@ Generator {
     "output": "output",
   },
   "_packages": Object {
-    "packageName": "@kurlytail/gen-lib",
-    "version": "test",
+    "lib": Object {
+      "packageName": "@kurlytail/gen-lib",
+      "version": "test",
+    },
   },
 }
 `;
