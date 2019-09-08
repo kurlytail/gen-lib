@@ -18,7 +18,7 @@ function manageFileNames(options, fileName) {
 
 function generateFileData(generator, templateDescription, fileName) {
     const template = _.template(
-        FS.readFileSync(templateDescription.template).toString()
+        FS.readFileSync(templateDescription.template, 'utf8').toString()
     );
     const newFileText = template({
         packages: generator.packages,
@@ -56,7 +56,7 @@ function generate(generator) {
                 fileName
             );
 
-            FS.writeFileSync(fileName, newFileText);
+            FS.writeFileSync(fileName, newFileText, 'utf8');
             logger.info(
                 `Generated ${fileName} from template ${templateDescription.template}`
             );

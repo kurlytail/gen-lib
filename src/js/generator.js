@@ -17,8 +17,8 @@ import Options from './options';
 class Generator {
     _loadOneDesign(design, designFile) {
         const augmentedDesign = designFile.endsWith('yml')
-            ? YAML.parse(FS.readFileSync(designFile))
-            : JSON.parse(FS.readFileSync(designFile));
+            ? YAML.parse(FS.readFileSync(designFile, 'utf8'))
+            : JSON.parse(FS.readFileSync(designFile, 'utf8'));
         return { ...design, ...augmentedDesign };
     }
 
@@ -110,7 +110,7 @@ class Generator {
                 PATH.resolve(mapFile)
             )}`
         );
-        const mapFileText = FS.readFileSync(mapFile).toString();
+        const mapFileText = FS.readFileSync(mapFile, 'utf8').toString();
         const template = _.template(mapFileText);
         const mapContents = template({
             design: this.design,

@@ -18,14 +18,18 @@ class Extension {
     }
 
     load(): Extension {
-        this._template = _.template(FS.readFileSync(this.file).toString());
+        this._template = _.template(
+            FS.readFileSync(this.file, 'utf-8').toString()
+        );
         return this;
     }
 
-    // eslint-disable-next-line flowtype/no-weak-types
     generate(
+        // eslint-disable-next-line flowtype/no-weak-types
         labels: any,
+        // eslint-disable-next-line flowtype/no-weak-types
         templateDescription: Object,
+        // eslint-disable-next-line flowtype/no-weak-types
         genArgs: ?Object
     ): string {
         if (!Array.isArray(labels)) {
