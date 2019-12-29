@@ -94,7 +94,7 @@
         "logform": "2.1.2",
         "mkdirp": "0.5.1",
         "node-getopt": "0.3.2",
-        "nodegit": "0.24.1",
+        "nodegit": "0.26.3",
         "path": "0.12.7",
         "prettier": "1.19.1",
         "prettier-plugin-java": "0.5.1",
