@@ -1,18 +1,4 @@
 {
     "extends": ["config:base"],
     "npmToken": "652d8581-196a-4ff3-ba30-4cc938995089"
-    // "packageRules": [
-    //     {
-    //         "depTypeList": ["dependencies"],
-    //         "schedule": ["after 9am and before 5pm every weekday"]
-    //     },
-    //     {
-    //         "packagePatterns": ["^@kurlytail/gen-"],
-    //         "schedule": ["after 5pm every weekday and every weekend"]
-    //     },
-    //     {
-    //         "packageNames": ["nodegit"],
-    //         "allowedVersions": "!=0.25.1"
-    //     }
-    // ]
 }
