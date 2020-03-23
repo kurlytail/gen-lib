@@ -93,6 +93,10 @@ class Generator {
     }
 
     _normalizeMapEntry(mapFile, map, [fileName, templateDescription]) {
+        templateDescription =
+            templateDescription instanceof String
+                ? { template: templateDescription }
+                : templateDescription;
         const templateFile = templateDescription.template;
         let template = PATH.relative(
             PATH.resolve('./'),
