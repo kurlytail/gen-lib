@@ -92,7 +92,7 @@
         "fs": "0.0.2",
         "lodash": "4.17.15",
         "logform": "2.1.2",
-        "mkdirp": "0.5.1",
+        "mkdirp": "0.5.4",
         "node-getopt": "0.3.2",
         "nodegit": "0.24.1",
         "path": "0.12.7",
