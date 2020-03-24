@@ -43,7 +43,7 @@
         "stringifier": "2.1.0",
         "uglifyjs-webpack-plugin": "2.2.0",
         "uuid": "3.4.0",
-        "webpack": "4.42.0",
+        "webpack": "4.42.1",
         "webpack-cli": "3.3.11",
         "webpack-node-externals": "1.7.2",
         "webpack-permissions-plugin": "1.0.7"
