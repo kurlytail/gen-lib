@@ -98,7 +98,7 @@
         "path": "0.12.7",
         "prettier": "2.0.2",
         "prettier-plugin-java": "0.7.1",
-        "underscore": "1.10.1",
+        "underscore": "1.10.2",
         "winston": "3.2.1",
         "yaml": "1.8.3"
     },
