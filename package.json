@@ -100,7 +100,7 @@
         "prettier-plugin-java": "0.7.1",
         "underscore": "1.10.2",
         "winston": "3.2.1",
-        "yaml": "1.8.3"
+        "yaml": "1.9.2"
     },
     "bin": {
         "sgen": "dist/sgen.min.js"
