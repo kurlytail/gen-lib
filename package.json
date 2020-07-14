@@ -90,7 +90,7 @@
         "deepmerge": "^4.0.0",
         "flat": "5.0.0",
         "fs": "0.0.2",
-        "lodash": "4.17.15",
+        "lodash": "4.17.19",
         "logform": "2.2.0",
         "mkdirp": "1.0.4",
         "node-getopt": "0.3.2",
