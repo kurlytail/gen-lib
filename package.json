@@ -45,7 +45,7 @@
         "uuid": "7.0.3",
         "webpack": "4.44.1",
         "webpack-cli": "3.3.12",
-        "webpack-node-externals": "2.5.1",
+        "webpack-node-externals": "2.5.2",
         "webpack-permissions-plugin": "1.0.7"
     },
     "scripts": {
