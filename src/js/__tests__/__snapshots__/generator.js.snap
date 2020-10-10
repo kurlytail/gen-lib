@@ -37,6 +37,7 @@ Generator {
       "a",
       "b",
     ],
+    "swarm": true,
   },
   "_packages": Object {
     "lib": Object {
@@ -84,6 +85,7 @@ Generator {
     ],
     "generator": Array [],
     "map": Array [],
+    "swarm": true,
   },
   "_packages": Object {
     "lib": Object {
@@ -135,6 +137,7 @@ Generator {
       "b",
     ],
     "output": "output",
+    "swarm": true,
   },
   "_packages": Object {
     "lib": Object {
@@ -186,6 +189,7 @@ Generator {
       "b",
     ],
     "output": "output",
+    "swarm": true,
   },
   "_packages": Object {
     "lib": Object {
