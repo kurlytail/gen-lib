@@ -22,14 +22,14 @@ describe('# integration test', () => {
     it('## should error out when downstream generator not found', () => {
         expect(() =>
             execSync(
-                './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -g some-generator -swarm'
+                './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -g some-generator -s'
             )
         ).toThrow();
     });
 
     it('## should generate design', () => {
         let output = execSync(
-            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -swarm'
+            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -s'
         ).toString();
         output = output
             .replace(
@@ -42,7 +42,7 @@ describe('# integration test', () => {
 
     it('## should generate design with merge', () => {
         let output = execSync(
-            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -swarm'
+            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -s'
         ).toString();
         output = output
             .replace(
@@ -57,7 +57,7 @@ describe('# integration test', () => {
         execSync('git commit -m Test', { cwd: 'testoutput' });
 
         output = execSync(
-            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -swarm'
+            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -s'
         ).toString();
         output = output
             .replace(
@@ -75,7 +75,7 @@ describe('# integration test', () => {
         execSync('git checkout master', { cwd: 'testoutput' });
 
         output = execSync(
-            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -swarm'
+            './dist/sgen.min.js -m src/test/fixture/map.json -d src/test/fixture/design.js -e src/test/fixture -o testoutput -s'
         ).toString();
         output = output.replace(
             /warn: Please cherrypick changes from master-sgen-generated from .*/,

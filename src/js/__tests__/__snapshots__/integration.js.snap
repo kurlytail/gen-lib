@@ -121,6 +121,7 @@ Options:
   -o, --output=ARG     output directory for generated files
   -g, --generator=ARG+ generators to be used
   -p, --options=ARG+   extra option json/yaml files
+  -s, --swarm          Apply swarm design transformations
   -h, --help           display this help
 "
 `;
