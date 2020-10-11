@@ -10,7 +10,8 @@ type OptionType = {
     map: Array<string>,
     extension: Array<string>,
     generator: Array<string>,
-    options: Array<string>
+    options: Array<string>,
+    swarm: boolean
 };
 
 class Options {
@@ -20,6 +21,7 @@ class Options {
     generator: Array<string>;
     options: Array<string>;
     output: string;
+    swarm: boolean;
 
     // eslint-disable-next-line flowtype/no-weak-types
     constructor(processArgs: Array<string>, overrideOptions: OptionType) {
@@ -29,7 +31,8 @@ class Options {
             ['e', 'extension=ARG+', 'extension directories or files'],
             ['o', 'output=ARG', 'output directory for generated files'],
             ['g', 'generator=ARG+', 'generators to be used'],
-            ['p', 'options=ARG+', 'extra option json/yaml files']
+            ['p', 'options=ARG+', 'extra option json/yaml files'],
+            ['s', 'swarm', 'Apply swarm design transformations']
         ]);
 
         getopt.bindHelp();
@@ -45,7 +48,8 @@ class Options {
             map: [],
             extension: [],
             generator: [],
-            options: []
+            options: [],
+            swarm: false
         });
 
         let fileOptions =
@@ -68,11 +72,13 @@ class Options {
         options.map = options.map || [];
         options.extension = options.extension || [];
         options.generator = options.generator || [];
+        options.swarm = options.swarm || false;
 
         this.design = [...this.design, ...options.design];
         this.map = [...this.map, ...options.map];
         this.extension = [...this.extension, ...options.extension];
         this.generator = [...this.generator, ...options.generator];
+        this.swarm = this.swarm || options.swarm;
     }
 }
 

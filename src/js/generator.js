@@ -35,7 +35,7 @@ class Generator {
         };
 
         // Normalize design
-        this._design = getDesign(rawDesign);
+        if (this.options.swarm) this._design = getDesign(rawDesign);
     }
 
     _loadGeneratorPackage(pack) {

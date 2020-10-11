@@ -15,26 +15,30 @@ const FIXTURES = {
     NO_OPTIONS: {
         map: [],
         design: [],
-        generator: []
+        generator: [],
+        swarm: true
     },
 
     MAP_ONLY_OPTIONS: {
         map: ['a', 'b'],
         design: [],
-        generator: []
+        generator: [],
+        swarm: true
     },
 
     DESIGN_ONLY_OPTIONS: {
         map: [],
         design: ['aa', 'bb'],
-        generator: []
+        generator: [],
+        swarm: true
     },
 
     ALL_OPTIONS: {
         map: ['a', 'b'],
         design: ['aa', 'bb'],
         output: 'output',
-        generator: []
+        generator: [],
+        swarm: true
     },
 
     MAP: {

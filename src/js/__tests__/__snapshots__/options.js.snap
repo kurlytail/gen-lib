@@ -31,6 +31,7 @@ Options {
     "moreoption.json",
   ],
   "someOption": Object {},
+  "swarm": false,
 }
 `;
 
@@ -54,6 +55,7 @@ Options {
   ],
   "options": Array [],
   "someOption": Object {},
+  "swarm": false,
 }
 `;
 
@@ -85,6 +87,7 @@ Options {
   ],
   "options": Array [],
   "someOption": Object {},
+  "swarm": false,
 }
 `;
 
@@ -110,6 +113,7 @@ Options {
     "someoption.yml",
   ],
   "someOption": Object {},
+  "swarm": false,
 }
 `;
 
@@ -121,5 +125,6 @@ Options {
   "map": Array [],
   "options": Array [],
   "someOption": Object {},
+  "swarm": false,
 }
 `;

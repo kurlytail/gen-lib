@@ -10,7 +10,7 @@ class ExtensionBuilder {
     // eslint-disable-next-line flowtype/no-weak-types
     _generator: Object;
     // eslint-disable-next-line flowtype/no-weak-types
-    _extensions: Array<Object>
+    _extensions: Array<Object>;
 
     // eslint-disable-next-line flowtype/no-weak-types
     constructor(generator: Object) {
