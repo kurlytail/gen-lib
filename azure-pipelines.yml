@@ -48,7 +48,6 @@ steps:
       env
   displayName: 'Pushing version into git'
 
-
   env:
     GITHUB_TOKEN: $(GITHUB_TOKEN)
 

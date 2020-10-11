@@ -12,34 +12,36 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDebug = process.env.NODE_ENV === 'debug';
 const isDist = isDebug || isProd ? '.min' : '';
 const distPath = path.join(__dirname, 'dist');
-const showConfigOnly = '1' === process.env.SHOW_CONFIG_ONLY || 'true' === process.env.SHOW_CONFIG_ONLY;
+const showConfigOnly =
+    '1' === process.env.SHOW_CONFIG_ONLY ||
+    'true' === process.env.SHOW_CONFIG_ONLY;
 
 const config = {
     output: {
         filename: `[name]${isDist}.js`,
         path: distPath,
         pathinfo: !isProd,
-        libraryTarget: 'var'
+        libraryTarget: 'var',
     },
 
     devtool: 'inline-source-map',
 
     resolve: {
         extensions: ['.js'],
-        modules: ['node_modules', 'src']
+        modules: ['node_modules', 'src'],
     },
 
     plugins: [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
-            failOnError: false
+            failOnError: false,
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify(isProd ? 'production' : 'development')
+                NODE_ENV: JSON.stringify(isProd ? 'production' : 'development'),
             },
-            'app.version': JSON.stringify(pkg.version)
-        })
+            'app.version': JSON.stringify(pkg.version),
+        }),
     ],
 
     module: {
@@ -52,20 +54,22 @@ const config = {
                     {
                         loader: 'eslint-loader',
                         options: {
-                            emitWarning: true
-                        }
-                    }
-                ]
+                            emitWarning: true,
+                        },
+                    },
+                ],
             },
             {
                 exclude: /node_modules/,
                 test: /\.js$/,
-                loader: 'babel-loader'
-            }
-        ]
+                loader: 'babel-loader',
+            },
+        ],
     },
-
-    target: 'node'
+    optimization: {
+        minimize: false,
+    },
+    target: 'node',
 };
 
 if (isProd) {
@@ -82,17 +86,19 @@ if (showConfigOnly) {
 const configLib = Object.assign({}, config, {
     externals: [nodeExternals()],
     entry: {
-        lib: './src/js/index.js'
-    }
+        lib: './src/js/index.js',
+    },
 });
 
 const configSgen = Object.assign({}, config, {
     externals: [nodeExternals()],
     entry: {
-        sgen: './src/js/sgen.js'
-    }
+        sgen: './src/js/sgen.js',
+    },
 });
 
-configSgen.plugins.push(new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true }));
+configSgen.plugins.push(
+    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true })
+);
 
 module.exports = [configSgen, configLib];
