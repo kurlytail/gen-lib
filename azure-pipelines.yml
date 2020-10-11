@@ -26,10 +26,24 @@ steps:
     workingFile: '.npmrc'
     customEndpoint: 'kurlytail-npm'
 
+- task: Cache@2
+  displayName: Cache node_modules
+  inputs:
+    key: 'npm | "$(Agent.OS)" | $(Build.SourcesDirectory)/package-lock.json'
+    path: $(Build.SourcesDirectory)/node_modules
+    cacheHitVar: CACHE_RESTORED
+
+- task: Npm@1
+  displayName: 'Install the dependencies'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'ci'
+  condition: ne(variables.CACHE_RESTORED, 'true')
+
 - task: CmdLine@2
   inputs:
     script: |
-      npm-cache install
       npm --no-git-tag-version version patch
       npm run build
       npm run lint
