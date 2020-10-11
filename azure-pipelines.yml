@@ -29,7 +29,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      npm install
+      npm-cache install
       npm --no-git-tag-version version patch
       npm run build
       npm run lint
