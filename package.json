@@ -49,8 +49,8 @@
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
-        "build": "NODE_ENV=\"debug\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
-        "build-prod": "NODE_ENV=\"production\" webpack --display-modules --display-reasons; chmod +x dist/sgen.min.js",
+        "build": "NODE_ENV=\"debug\" webpack; chmod +x dist/sgen.min.js",
+        "build-prod": "NODE_ENV=\"production\" webpack; chmod +x dist/sgen.min.js",
         "lint": "eslint src",
         "test": "NODE_OPTIONS='--max_old_space_size=4096' jest tests",
         "test:watch": "jest --watch tests",
