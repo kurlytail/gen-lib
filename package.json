@@ -42,7 +42,6 @@
         "source-map-support": "0.5.19",
         "stringifier": "2.1.0",
         "uglifyjs-webpack-plugin": "2.2.0",
-        "uuid": "7.0.3",
         "webpack": "4.44.2",
         "webpack-cli": "3.3.12",
         "webpack-node-externals": "2.5.2",
@@ -100,6 +99,7 @@
         "prettier": "2.1.2",
         "prettier-plugin-java": "0.8.2",
         "underscore": "1.11.0",
+        "uuid": "7.0.3",
         "winston": "3.3.3",
         "yaml": "1.10.0"
     },
