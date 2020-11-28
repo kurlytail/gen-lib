@@ -96,7 +96,7 @@
         "node-getopt": "0.3.2",
         "nodegit": "0.24.1",
         "path": "0.12.7",
-        "prettier": "2.2.0",
+        "prettier": "2.2.1",
         "prettier-plugin-java": "1.0.0",
         "underscore": "1.12.0",
         "uuid": "7.0.3",
