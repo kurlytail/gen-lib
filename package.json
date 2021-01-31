@@ -45,7 +45,7 @@
         "webpack": "4.46.0",
         "webpack-cli": "4.4.0",
         "webpack-node-externals": "2.5.2",
-        "webpack-permissions-plugin": "1.0.7"
+        "webpack-permissions-plugin": "1.0.8"
     },
     "scripts": {
         "docs": "jsdoc -c jsdoc.json && npx opn-cli ./docs/index.html",
