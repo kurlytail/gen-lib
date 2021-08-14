@@ -1,7 +1,7 @@
 {
     "name": "@kurlytail/gen-lib",
     "description": "Source generator library",
-    "version": "2.1.134",
+    "version": "2.1.135",
     "main": "dist/lib.min.js",
     "devDependencies": {
         "@babel/cli": "7.14.8",
