@@ -30,7 +30,7 @@
         "eslint-plugin-prettier": "3.4.1",
         "exports-loader": "3.0.0",
         "file-loader": "6.2.0",
-        "flow-bin": "0.158.0",
+        "flow-bin": "0.159.0",
         "imports-loader": "3.0.0",
         "jest": "27.1.0",
         "jest-junit-reporter": "1.1.0",
